@@ -1,0 +1,244 @@
+%<*dump>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                            %%
+%% Author: Marcus Rommedahl                                                   %%
+%% Email:  40310@student.hhs.se                                               %%
+%% Date:   2013-02-01                                                         %%
+%%                                                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                            %%
+%% This project consists of the following files:                              %%
+%%                                                                            %%
+%% * workdoc.rnw (THIS FILE)                                                  %%
+%% *                                                                          %%
+%% * script (A BASH script file)                                              %%
+%%                                                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%</dump>
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preamble                                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Document settings
+\documentclass[12pt, a4paper, oneside]{article}	%draft option
+%\documentclass[12pt, article, a4paper, oneside]{memoir}	%draft option
+%\documentclass[11pt,article,oneside]{memoir}
+
+\title{Thesis Title}
+%\subtitle{The subtitle}	%Not in standard class.
+\author{by Marcus Rommedahl}
+
+% Packages to use
+
+%\usepackage{natbib}		% Adds additional styles to bibtex.
+\usepackage[citestyle=authoryear]{biblatex}	% Use instead of natbib
+\addbibresource{ref.bib}	% Use instead of natbib
+%\usepackage{showframe}	% Shows margins by asserting frames.
+\usepackage[breaklinks]{hyperref}	% Makes it possible to click internal links. Load after biblatex.
+
+% Commands
+
+% Make margin notes font size tiny
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dokument                                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+%</thesis|techdoc>
+
+	%<*thesis|techdoc>
+\abstract{\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}	An abstract  is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\clearpage
+\tableofcontents
+\listoffigures
+\listoftables
+%</thesis|techdoc>	
+
+%<*thesis|techdoc>
+\clearpage
+\section{Introduction}
+
+\hspace{0pt}\marginpar{An anecdotal example.\\Add references.}In the preface of the financial crisis of 2007, there was a boom in the US housing market, and the ricing prices increased the asset values of American homeowners. The higher prices did however not stop the market turnover, and to finance the acquisitions, households took on more dept. In the perspective of a balance sheet, we can say that what had started as a increase on the asset side of American households and thereby increasing their balance sheet, would subsequently make them to take on more debt. This was done by either house owners sold their homes to someone with a bigger mortgage debt, or by refinancing their homes with a bigger mortgage and thereby swap their increased equity for cash. Thus had the increasing house prices not only had an effect on the balance sheets of the households, but also on the balance sheets of their financial counter parties.
+
+\hspace{0pt}\marginpar{Hypothetical questions.}This is an illustration of how different sectors in the US economy are interlinked with each other in a balance sheet perspective, and how a shock in the asset side in one sector can affect the balance sheets in other sectors.
+What we asked ourself is if there might be some dynamics or properties that affects how such a balance sheet shock affects a system of balance sheets. We also wondered how such potential properties would behave. Does negative shocks give other estimations than positive shocks, or are there other nonlinearities to it, such that it reacts very differently to very big shocks. Also, may there be some kind of relation in a system of balance sheet components (?among the sectors?), such that deviations makes the system correct back to a equilibrium.
+
+\hspace{0pt}\marginpar{Thesis topic. Will be more precisely defined as work progress}The topic of this thesis is to use a framework based on a balance sheet approach, and by applying time series methods test for the presence for system stationarity or cointegrating relationships.
+
+\hspace{0pt}\marginpar{Presentation of the sections.}This is the outline of the thesis:
+In the \hyperref[sec:theory]{second section} we present theories used for the thesis, which in the \hyperref[sec:previous_research]{third section} is followed up by previous research.
+In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model. The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
+In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}. Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Theory}\label{sec:theory}
+
+\hspace{0pt}\marginpar{Perhaps merge with Previous Research.\\Really not that much theory for this topic.}Modern Money theory
+
+Keynesian style theory
+
+Austrian Theory
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Previous Research}\label{sec:previous_research}
+
+IMF \cite{imf02}
+
+ECB \cite{ecb09}
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{A five sector economy}\label{sec:five_sector_economy}
+
+The balance sheet and interlinkages. \marginpar{This definition of the sectors is preliminary. The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}The model defines five sectors of the economy. Households, non-financial corporations, banks, general goverment and a central bank.
+The exposures between the sectors can be defined similarly as in \cite{ecb09} page 13, so that the balance sheet exposures are stored in a matrix such the liable sector is in the columns and the other part in the rows. Then, the series would contain one such matrix for each time period.
+
+%Dynamics. The effect of prices. Flows. Assumptions.
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Empirical strategy}\label{sec:empirical_strategy}
+
+The first thing we will do in the empirical strategy is to define a proto-model such that we can chose what variables to evaluate. From the variables in the proto-model we will also choose or subject of analysis, as availability of data is a crucial aspect. First, all the variables need to have a sample rate that meets a minimal requirement, as the data has to be downsampled to the sample rate of the variable with the lowest sample rate. Also, the data series needs to bee long enough to later get a good model estimation. 
+
+As the choice of time series model is very dependent on the properties of the variables the evaluation process is very crucial.
+
+In short.
+Test variables for integrated/stationarity for decision on what model to use. 
+
+%Dependent on data avaliability.
+%US/EU/OECD-country?
+
+%The assessment dependent och the behaviour/properties of the variables. Stationary. Integrated.
+
+%Variable examination.
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Model specification}\label{sec:model_specification}
+
+Why a VAR/VECM-tupe of model.
+
+What kind of VAR/VECM-type of model. Assumptions.
+
+Why different alternations/specifications of the model.
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Estimation results}\label{sec:estimation_results}
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Analysis}\label{sec:analysis}
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\section{Conclusions}\label{sec:conclusions}
+%</thesis|techdoc>
+
+%<*techdoc>
+Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+%</techdoc>
+
+%<*thesis|techdoc>
+\section{Sandbox}\label{sec:sandbox}
+\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}Here is a code chunk.
+
+<<foo, fig.height=4, echo=FALSE>>=
+plot(rnorm(100))
+@
+
+You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
+
+%<*thesis>
+\clearpage
+%\bibliography{ref}	
+%\bibliographystyle{plainnat}
+\printbibliography	% Using biblatex
+%</thesis>
+
+\end{document}
+%</thesis|techdoc>
+
+%<*ref>
+@article{	ath01,
+	author	= {Author Authorson},
+	title	= {The Economic Article},
+	journal	= {Journal of Economic Articles},
+	year	= {2001},
+	month	= {September},
+	volume	= {3},
+	number	= {5},
+	pages	= {100--110},
+	doi		= {10.1257/jel.48.3.603},
+	url		= {http://www.aeaweb.org/articles.php?doi=10.1257/jel.48.3.603},
+	abstract	= {An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper’s purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
+}
+@TechReport{imf02,
+	author	= {Brad Setser and Nouriel Roubini and Christian Keller and Mark Allen and Christoph B. Rosenberg},
+	title	= {A Balance Sheet Approach to Financial Crisis},
+	year	= {2002},
+	month	= {Dec},
+	institution	= {International Monetary Fund},
+	type	= {IMF Working Papers},
+	url		= {http://ideas.repec.org/p/imf/imfwpa/02-210.html},
+	number	= {02/210},
+	abstract	= {The paper lays out an analytical framework for understanding crises in emergin	markets based on examination of stock variables in the aggregate balance sheet of a country and the balance sheets of its main sectors (assets and liabilities). It focuses on the risks created by maturity, currency, and capital structure mismatches. This framework draws attention to the vulnerabilities created by debts among residents, particularly those denominated in foreign currency, and it helps to explain how problems in one sector can spill over into other sectors, eventually triggering an external balance of payments crisis. The paper also discusses the potential of macroeconomic policies and official intervention to mitigate the cost of such a crisis.},
+	keywords={Emerging markets}
+}
+@TechReport{ecb09,
+  author	= {Olli Castrén and Ilja Kristian Kavonius},
+  title		= {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
+  year		= {2009},
+  month		= {Dec},
+  institution		= {European Central Bank},
+  type		= {Working Paper Series},
+  url		= {http://ideas.repec.org/p/ecb/ecbwps/20091124.html},
+  number	= {1124},
+  abstract	= {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
+  keywords	= {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
+}
+%</ref>
+
+%<*dump>
+<<Write DOCSTRIP installation files>>=
+writeLines(
+	"\\input docstrip.tex		%Loads docstrip
+	\\keepsilent
+	\\askforoverwritefalse
+	\\nopreamble
+	\\nopostamble
+	\\generate{
+		\\file{thesis.rnw}{					%Sets the output:	thesis.rnw
+	    	\\from{workdoc.rnw}{thesis}}		%Sets the input:	workdoc.rnw	& the tag:	thesis
+		\\file{techdoc.rnw}{					%Sets the output:	techdoc.rnw
+	    	\\from{workdoc.rnw}{techdoc}}	%Sets the input:	workdoc.rnw	& the tag:	techdoc
+		\\file{ref.bib}{					%Sets the output:	techdoc.rnw
+	    	\\from{workdoc.rnw}{ref}}	%Sets the input:	workdoc.rnw	& the tag:	techdoc
+	}
+	\\endbatchfile"
+	,con="workdoc.ins"
+)
+@
+%</dump>
