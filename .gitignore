@@ -1,0 +1,10 @@
+# a comment - this is ignored
+
+# tilde files
+*~
+
+# Files in the workdir
+*.tex
+*.lof
+*.lot
+*.toc
