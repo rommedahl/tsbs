@@ -19,6 +19,7 @@ reference/
 *.lot
 *.out
 *.pdf
+*.run.xml
 *.spl
 *.sty
 *.tex
