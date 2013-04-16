@@ -3,8 +3,21 @@
 # tilde files
 *~
 
+# Folders
+Course Material/
+
 # Files in the workdir
-*.tex
+*.aux
+*.bbl
+*.bib
+*.blg
+*.ins
 *.lof
+*.log
 *.lot
+*.out
+*.pdf
+*.spl
+*.sty
+*.tex
 *.toc
