@@ -58,7 +58,9 @@
 %</thesis|techdoc>
 
 	%<*thesis|techdoc>
-\abstract{\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}	An abstract  is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
+\abstract{\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}An abstract  is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
+When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
+Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -72,17 +74,25 @@
 \clearpage
 \section{Introduction}
 
-\hspace{0pt}\marginpar{An anecdotal example.\\Add references.}In the preface of the financial crisis of 2007, there was a boom in the US housing market, and the ricing prices increased the asset values of American homeowners. The higher prices did however not stop the market turnover, and to finance the acquisitions, households took on more dept. In the perspective of a balance sheet, we can say that what had started as a increase on the asset side of American households and thereby increasing their balance sheet, would subsequently make them to take on more debt. This was done by either house owners sold their homes to someone with a bigger mortgage debt, or by refinancing their homes with a bigger mortgage and thereby swap their increased equity for cash. Thus had the increasing house prices not only had an effect on the balance sheets of the households, but also on the balance sheets of their financial counter parties.
+\hspace{0pt}\marginpar{An anecdotal example.\\Add references.}In the preface of the financial crisis of 2007, there was a boom in the US housing market, and the ricing prices increased the asset values of American homeowners.
+The higher prices did however not stop the market turnover, and to finance the acquisitions, households took on more dept.
+In the perspective of a balance sheet, we can say that what had started as a increase on the asset side of American households and thereby increasing their balance sheet, would subsequently make them to take on more debt.
+This was done by either house owners sold their homes to someone with a bigger mortgage debt, or by refinancing their homes with a bigger mortgage and thereby swap their increased equity for cash.
+Thus had the increasing house prices not only had an effect on the balance sheets of the households, but also on the balance sheets of their financial counter parties.
 
 \hspace{0pt}\marginpar{Hypothetical questions.}This is an illustration of how different sectors in the US economy are interlinked with each other in a balance sheet perspective, and how a shock in the asset side in one sector can affect the balance sheets in other sectors.
-What we asked ourself is if there might be some dynamics or properties that affects how such a balance sheet shock affects a system of balance sheets. We also wondered how such potential properties would behave. Does negative shocks give other estimations than positive shocks, or are there other nonlinearities to it, such that it reacts very differently to very big shocks. Also, may there be some kind of relation in a system of balance sheet components (?among the sectors?), such that deviations makes the system correct back to a equilibrium.
+What we asked ourself is if there might be some dynamics or properties that affects how such a balance sheet shock affects a system of balance sheets.
+We also wondered how such potential properties would behave. Does negative shocks give other estimations than positive shocks, or are there other nonlinearities to it, such that it reacts very differently to very big shocks.
+Also, may there be some kind of relation in a system of balance sheet components (?among the sectors?), such that deviations makes the system correct back to a equilibrium.
 
 \hspace{0pt}\marginpar{Thesis topic. Will be more precisely defined as work progress}The topic of this thesis is to use a framework based on a balance sheet approach, and by applying time series methods test for the presence for system stationarity or cointegrating relationships.
 
 \hspace{0pt}\marginpar{Presentation of the sections.}This is the outline of the thesis:
 In the \hyperref[sec:theory]{second section} we present theories used for the thesis, which in the \hyperref[sec:previous_research]{third section} is followed up by previous research.
-In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model. The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
-In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}. Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
+In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model.
+The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
+In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}.
+Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
