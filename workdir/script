@@ -2,7 +2,7 @@
 
 #[sudo chmod a+x script]
 
-rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.log *.out *.pdf *.spl *.sty *.tex 	#*tikzDictionary
+rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lof *.log *.lot *.out *.pdf *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
 
 # Knits the workdoc to create the DOCSTRIP installation file workdoc.ins
 Rscript -e "library(knitr); knit('workdoc.rnw')"
@@ -13,18 +13,18 @@ rm -r -f *.tex
 
 # Process the thesis
 Rscript -e "library(knitr); knit('thesis.rnw')"		# Knits the thesis.rnw
-pdflatex thesis -halt-on-error
+pdflatex -interaction=batchmode -halt-on-error thesis
 bibtex thesis
-pdflatex thesis -halt-on-error
-pdflatex thesis -halt-on-error
+pdflatex -interaction=batchmode -halt-on-error thesis
+pdflatex -interaction=batchmode -halt-on-error thesis
 
 # pdflatex RJwrapper
 
 # Process the techdoc
 Rscript -e "library(knitr); knit('techdoc.rnw')"	# Knits the techdoc.rnw
-pdflatex techdoc -halt-on-error
+pdflatex -interaction=batchmode -halt-on-error techdoc
 bibtex techdoc
-pdflatex techdoc -halt-on-error
-pdflatex techdoc -halt-on-error
+pdflatex -interaction=batchmode -halt-on-error techdoc
+pdflatex -interaction=batchmode -halt-on-error techdoc
 
-rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.log *.out *.spl *.sty *.tex 	#*tikzDictionary
+rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lof *.l0g *.lot *.out *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary

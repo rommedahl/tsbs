@@ -91,19 +91,14 @@ Also, may there be some kind of relation in a system of balance sheet components
 In the \hyperref[sec:theory]{second section} we present theories used for the thesis, which in the \hyperref[sec:previous_research]{third section} is followed up by previous research.
 In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model.
 The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
-In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}.
-Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
+In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}.Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
 \section{Theory}\label{sec:theory}
 
-\hspace{0pt}\marginpar{Perhaps merge with Previous Research.\\Really not that much theory for this topic.}Modern Money theory
-
-Keynesian style theory
-
-Austrian Theory
-
+\hspace{0pt}\marginpar{Perhaps merge with Previous Research.\\Really not that much theory for this topic.}
+[Not found any research that uses a Balance Sheet approach in TS-setting as we inteend to do.]
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -112,11 +107,14 @@ Austrian Theory
 IMF \cite{imf02}
 
 ECB \cite{ecb09}
-
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{A five sector economy}\label{sec:five_sector_economy}
+\section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\subsection{A five sector economy}\label{sec:five_sector_economy}
 
 The balance sheet and interlinkages. \marginpar{This definition of the sectors is preliminary. The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}The model defines five sectors of the economy. Households, non-financial corporations, banks, general goverment and a central bank.
 The exposures between the sectors can be defined similarly as in \cite{ecb09} page 13, so that the balance sheet exposures are stored in a matrix such the liable sector is in the columns and the other part in the rows. Then, the series would contain one such matrix for each time period.
@@ -192,10 +190,11 @@ You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.59867
 %</thesis|techdoc>
 
 %<*ref>
-@article{	ath01,
+@article{ath01,
 	author	= {Author Authorson},
 	title	= {The Economic Article},
 	journal	= {Journal of Economic Articles},
+	date	= {2001-09},
 	year	= {2001},
 	month	= {September},
 	volume	= {3},
@@ -208,6 +207,7 @@ You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.59867
 @TechReport{imf02,
 	author	= {Brad Setser and Nouriel Roubini and Christian Keller and Mark Allen and Christoph B. Rosenberg},
 	title	= {A Balance Sheet Approach to Financial Crisis},
+	date	= {2002-12},
 	year	= {2002},
 	month	= {Dec},
 	institution	= {International Monetary Fund},
@@ -218,8 +218,9 @@ You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.59867
 	keywords={Emerging markets}
 }
 @TechReport{ecb09,
-  author	= {Olli Castrén and Ilja Kristian Kavonius},
+  author	= {Ollié Castrén and Ilja Kristian Kavonius},
   title		= {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
+  date		= {2009-12},
   year		= {2009},
   month		= {Dec},
   institution		= {European Central Bank},
