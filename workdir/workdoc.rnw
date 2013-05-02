@@ -22,6 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Document settings
+\RequirePackage[l2tabu, orthodox]{nag}	% The nag package warns you for incorrect LaTeX usage
 \documentclass[12pt, a4paper, oneside]{article}	%draft option
 %\documentclass[12pt, article, a4paper, oneside]{memoir}	%draft option
 %\documentclass[11pt,article,oneside]{memoir}
@@ -36,9 +37,14 @@
 \usepackage[citestyle=authoryear]{biblatex}	% Use instead of natbib
 \addbibresource{ref.bib}	% Use instead of natbib
 \usepackage{showframe}	% Shows margins by asserting frames.
-\usepackage[breaklinks]{hyperref}	% Makes it possible to click internal links. Load after biblatex.
-\usepackage{mathtools}	%Loads amsmath aswell
-\usepackage{paralist}	%Inline lists
+\usepackage{mathtools}	% Loads amsmath aswell
+\usepackage{paralist}	% Inline lists
+%\usepackage[a4paper]{geometry}	%Makes less marings on the sides. Do not load if using memoir.
+
+\usepackage{microtype}	% The microtype package improves the spacing between words and letters.  Load this package after fonts.
+% Perhaps load todo notes
+
+\usepackage[breaklinks, colorlinks=false, linkbordercolor={0 0 1}]{hyperref}	%Ex­ten­sive sup­port for hy­per­text. Makes it possible to click internal links. Load after biblatex. It should be loaded at the end of the preamble.
 
 % Commands
 
@@ -60,7 +66,9 @@
 %</thesis|techdoc>
 
 	%<*thesis|techdoc>
-\abstract{\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}An abstract  is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
+\abstract{
+\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}
+An abstract  is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
 When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
 Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 %</thesis|techdoc>
@@ -185,7 +193,7 @@ By construction there are some properties to this setting:
 \item The diagonal when $x_{ij,t} : i=j$ represents a sectors conctractual claims on its' self.
 This could be argued for to be zero as a there are no reason for someone to own money to one self.
 But a sector includes heterogenous agents and may thus take on financial agreements within the sector,
-e.g. may banks borrow from eachother on different maturitues.
+e.g.\ may banks borrow from eachother on different maturitues.
 The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
 \item\label{p1_2} The summation of the row $i$, excluding the diagonal entries if they are non-zero, corresponds to the financial assets $a_{i,t} = \sum_{j=S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
 \item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i=S \setminus j} x_{ij,t}$ other sectors has on sector $j$; and from \ref{p1_2} and \ref{p1_3} we get \item, that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$.
@@ -261,13 +269,31 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
 
 %<*thesis|techdoc>
 \section{Sandbox}\label{sec:sandbox}
-\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}Here is a code chunk.
+\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
 
-<<foo, fig.height=4, echo=FALSE>>=
+Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
+
+\begin{figure}[h]
+<<foo, eval=TRUE, echo=FALSE, results='asis', fig.height=4>>=
 plot(rnorm(100))
 @
+\caption[Text that shows up in the figure listing.]{Text describing this figure under the figure.}
+\label{fig:sb_figure}
+\end{figure}
 
-You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
+Lite text emellan.
+
+\begin{table}[height]
+\caption[Text that shows up in the table listing.]{Text describing this figure over the table.}
+\label{tab:sb_table}
+\begin{tabular}{ l | c || r }
+  1 & 2 & 3 \\
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+\end{tabular}
+\end{table}
+
+You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
 
 %<*thesis>
 \clearpage
