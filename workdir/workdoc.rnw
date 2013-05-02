@@ -35,8 +35,10 @@
 %\usepackage{natbib}		% Adds additional styles to bibtex.
 \usepackage[citestyle=authoryear]{biblatex}	% Use instead of natbib
 \addbibresource{ref.bib}	% Use instead of natbib
-%\usepackage{showframe}	% Shows margins by asserting frames.
+\usepackage{showframe}	% Shows margins by asserting frames.
 \usepackage[breaklinks]{hyperref}	% Makes it possible to click internal links. Load after biblatex.
+\usepackage{mathtools}	%Loads amsmath aswell
+\usepackage{paralist}	%Inline lists
 
 % Commands
 
@@ -88,21 +90,25 @@ Also, may there be some kind of relation in a system of balance sheet components
 \hspace{0pt}\marginpar{Thesis topic. Will be more precisely defined as work progress}The topic of this thesis is to use a framework based on a balance sheet approach, and by applying time series methods test for the presence for system stationarity or cointegrating relationships.
 
 \hspace{0pt}\marginpar{Presentation of the sections.}This is the outline of the thesis:
-In the \hyperref[sec:theory]{second section} we present theories used for the thesis, which in the \hyperref[sec:previous_research]{third section} is followed up by previous research.
+In the \hyperref[sec:theory_previous_research]{second section} we present theories and previous research that is relevant for the thesis.
 In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model.
 The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
 In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}.Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{Theory}\label{sec:theory}
+\section{Theory \& Previous Research}\label{sec:theory_previous_research}
+\hspace{0pt}\marginpar{Theory and previous research}
 
 \hspace{0pt}\marginpar{Perhaps merge with Previous Research.\\Really not that much theory for this topic.}
 [Not found any research that uses a Balance Sheet approach in TS-setting as we inteend to do.]
+[Interconnectednes in the financial market]
+[Financial market/banks as intermediaries][Maturities longterm/short term][Smooth flows over time][More in the balance sheet]
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
 \section{Previous Research}\label{sec:previous_research}
+Merge to the previous section
 
 IMF \cite{imf02}
 
@@ -111,10 +117,94 @@ ECB \cite{ecb09}
 
 %<*thesis|techdoc>
 \section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}
+
+\hspace{0pt}\marginpar{Introduction to the balance sheet approach.}
+So what is a balance sheet approach and why do we use it for this thesis?
+There is other good market data such as prices and rates that is recorded at much higher frequencies.
+The benefit with the balance sheet perspective is that we with the stock data can examine the interlinkages between agents as financial positions occurs on different sides of the balance sheet for respective agent.
+
+\hspace{0pt}\marginpar{Validity of the data.}
+Balance sheets is an accounting entity, and we see a risk that it's conventions may be different from the view of an economist.
+\hspace{0pt}\marginpar{Ref}
+Also may loopholes in the regalutary framework make financial statements prone to manipulation, and biased financial data.
+An example is how the accounting rules made it possible for Japanese Banks to avoid bankruptcy in the the early nighties even though many of them where insolvent.
+\hspace{0pt}\marginpar{Ref}
+Investigating this is called for but we see this to be out of the scope for a masters thesis.
+\hspace{0pt}\marginpar{Are there papers on this?}
+However we beleve and assume that those deviations to be small on the aggregated level for the sectors of the economy, and have little impact on our estimates.
+
+\hspace{0pt}\marginpar{Three components of the balance sheet perspective.}
+Our balance sheet perspective will include three components: (i) Financial assets that constitutes a contractual claim;
+(ii) Non-financial assets such as tangible property.
+As owned property these assets won't be subject for any kind of mutual relationship between agents, and these assets will only be present on the asset side of an agents balance sheet.
+These assets are still interesting for the analysis as they might be used as colleteral for loans, and therefore their valueation might have an direct or indirect balance sheet effect;
+(iii) Expected flows such as households future income or goverments future tax revenue.
+This as agents can be assumed to structure it's present balance sheet on assumtions about future income.
+
+\hspace{0pt}\marginpar{The sectors.//May change this composition when gathering data, look at ECB/BoJ papers.}
+We will for our analysis divide the economy into it's five/six main sectoral balance:
+the Central Bank (CB);
+the Financial sector (FI);
+the Goverment (GOV);
+the Housholds (HH);
+the Non-Financial sector (NFI);
+the Rest of the World (ROW).
+In the next subsections we will more in detail explain and define the three balance sheet components using thsese sectors.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\subsection{A five sector economy}\label{sec:five_sector_economy}
+\subsection{Financial interlinkages}\label{sec:financial_interlinkages}
+
+\hspace{0pt}\marginpar{Defining the financial assets}
+As financial positions is a contractual agreement with betseen agents, we need to specify all the exposures between all the sectors that we have specified.
+Inspired by \cite{ecb09}, we define these financial relationships among the sectors $x_{ij}$ \marginpar{Perhaps not x?} as the balance sheet exposure of sector $i$ towards sector $j$, where $i,j \in S$, and $S$ \marginpar{Change S to I?} is a index set containing the $N$ sectors in our model.
+As this model will be used in a time series setting we will add the time index $t$.
+
+\begin{equation}\label{exposure}
+	x_{ij,t} : i,j \in S : |S|=N
+\end{equation}
+
+All possible financial exposures can thus be represented as a $N \times N$ matrix $X_{t}$.
+
+\begin{equation}\label{exposure_matrix}
+\begin{split}
+	X_{t} &=
+	\begin{bmatrix}
+		x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
+		\vdots & \ddots & \vdots &  & \vdots \\
+		x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
+		\vdots &  & \vdots & \ddots & \vdots \\	
+		x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
+	\end{bmatrix}
+\end{split}
+\end{equation}
+
+\hspace{0pt}\marginpar{Properties to the financial assets matrix constitution.}
+By construction there are some properties to this setting:
+ \begin{inparaenum}[(i)]
+\item The diagonal when $x_{ij,t} : i=j$ represents a sectors conctractual claims on its' self.
+This could be argued for to be zero as a there are no reason for someone to own money to one self.
+But a sector includes heterogenous agents and may thus take on financial agreements within the sector,
+e.g. may banks borrow from eachother on different maturitues.
+The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
+\item\label{p1_2} The summation of the row $i$, excluding the diagonal entries if they are non-zero, corresponds to the financial assets $a_{i,t} = \sum_{j=S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
+\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i=S \setminus j} x_{ij,t}$ other sectors has on sector $j$; and from \ref{p1_2} and \ref{p1_3} we get \item, that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$.
+\end{inparaenum}
+
+\hspace{0pt}\marginpar{Considerations to the size.}
+We will not use the matrix $X_{t}$ in any time series models itself, it's used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated. As the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a tradeoff between how many sectors to define, and not to loose power in the estimation process. To gain estimation power, we will also investigate if any entries may be insignificant for the analysis, and then drop them out of our models.
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\subsection{Tangible property}\label{sec:tangible_property}
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\subsection{Expected flows}\label{sec:expected_flows}
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\subsection{Defining the model/A five/six sector economy}\label{sec:five_sector_economy}
 
 The balance sheet and interlinkages. \marginpar{This definition of the sectors is preliminary. The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}The model defines five sectors of the economy. Households, non-financial corporations, banks, general goverment and a central bank.
 The exposures between the sectors can be defined similarly as in \cite{ecb09} page 13, so that the balance sheet exposures are stored in a matrix such the liable sector is in the columns and the other part in the rows. Then, the series would contain one such matrix for each time period.
@@ -218,7 +308,7 @@ You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.59867
 	keywords={Emerging markets}
 }
 @TechReport{ecb09,
-  author	= {Ollié Castrén and Ilja Kristian Kavonius},
+  author	= {Olli Castr\'{e}n and Ilja Kristian Kavonius},
   title		= {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
   date		= {2009-12},
   year		= {2009},
