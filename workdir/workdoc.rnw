@@ -41,6 +41,8 @@
 \usepackage{paralist}	% Inline lists
 %\usepackage[a4paper]{geometry}	%Makes less marings on the sides. Do not load if using memoir.
 
+\usepackage{easy-todo}	% Mark things to do later.
+
 \usepackage{microtype}	% The microtype package improves the spacing between words and letters.  Load this package after fonts.
 % Perhaps load todo notes
 
@@ -63,14 +65,23 @@
 \begin{document}
 
 \maketitle
+
+\todo{Come up with a title}
+
+\todo{Add supervisor information}
+
+\todo{Add key words and other fancy stuff}
+
 %</thesis|techdoc>
 
-	%<*thesis|techdoc>
+%<*thesis|techdoc>
 \abstract{
 \hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}
-An abstract  is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
+An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
 When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
 Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
+
+\listoftodos
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -91,7 +102,7 @@ This was done by either house owners sold their homes to someone with a bigger m
 Thus had the increasing house prices not only had an effect on the balance sheets of the households, but also on the balance sheets of their financial counter parties.
 
 \hspace{0pt}\marginpar{Hypothetical questions.}This is an illustration of how different sectors in the US economy are interlinked with each other in a balance sheet perspective, and how a shock in the asset side in one sector can affect the balance sheets in other sectors.
-What we asked ourself is if there might be some dynamics or properties that affects how such a balance sheet shock affects a system of balance sheets.
+What we asked our self is if theer might be some dynamics or properties that affects how such a balance sheet shock affects a system of balance sheets.
 We also wondered how such potential properties would behave. Does negative shocks give other estimations than positive shocks, or are there other nonlinearities to it, such that it reacts very differently to very big shocks.
 Also, may there be some kind of relation in a system of balance sheet components (?among the sectors?), such that deviations makes the system correct back to a equilibrium.
 
@@ -106,22 +117,23 @@ In the \hyperref[sec:model_specification]{sixth section} we will formalize our m
 
 %<*thesis|techdoc>
 \section{Theory \& Previous Research}\label{sec:theory_previous_research}
-\hspace{0pt}\marginpar{Theory and previous research}
+\hspace{0pt}\marginpar{Theory and previous research. Really not that much theory for this topic.}
 
-\hspace{0pt}\marginpar{Perhaps merge with Previous Research.\\Really not that much theory for this topic.}
-[Not found any research that uses a Balance Sheet approach in TS-setting as we inteend to do.]
+\todo{Write the theory \& previous research section.}
+
+[Not found any research that uses a Balance Sheet approach in TS-setting as we intend to do.]
 [Interconnectednes in the financial market]
-[Financial market/banks as intermediaries][Maturities longterm/short term][Smooth flows over time][More in the balance sheet]
+[Financial market/banks as intermediaries][Maturities long term/short term][Smooth flows over time][More in the balance sheet]
 %</thesis|techdoc>
 
-%<*thesis|techdoc>
+%<*dump>
 \section{Previous Research}\label{sec:previous_research}
 Merge to the previous section
 
 IMF \cite{imf02}
 
 ECB \cite{ecb09}
-%</thesis|techdoc>
+%</dump>
 
 %<*thesis|techdoc>
 \section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}
@@ -139,32 +151,32 @@ An example is how the accounting rules made it possible for Japanese Banks to av
 \hspace{0pt}\marginpar{Ref}
 Investigating this is called for but we see this to be out of the scope for a masters thesis.
 \hspace{0pt}\marginpar{Are there papers on this?}
-However we beleve and assume that those deviations to be small on the aggregated level for the sectors of the economy, and have little impact on our estimates.
+However we believe and assume that those deviations to be small on the aggregated level for the sectors of the economy, and have little impact on our estimates.
 
 \hspace{0pt}\marginpar{Three components of the balance sheet perspective.}
 Our balance sheet perspective will include three components: (i) Financial assets that constitutes a contractual claim;
 (ii) Non-financial assets such as tangible property.
 As owned property these assets won't be subject for any kind of mutual relationship between agents, and these assets will only be present on the asset side of an agents balance sheet.
-These assets are still interesting for the analysis as they might be used as colleteral for loans, and therefore their valueation might have an direct or indirect balance sheet effect;
-(iii) Expected flows such as households future income or goverments future tax revenue.
-This as agents can be assumed to structure it's present balance sheet on assumtions about future income.
+These assets are still interesting for the analysis as they might be used as collateral for loans, and therefore their valuation might have an direct or indirect balance sheet effect;
+(iii) Expected flows such as households future income or governments future tax revenue.
+This as agents can be assumed to structure it's present balance sheet on assumptions about future income.
 
 \hspace{0pt}\marginpar{The sectors.//May change this composition when gathering data, look at ECB/BoJ papers.}
 We will for our analysis divide the economy into it's five/six main sectoral balance:
 the Central Bank (CB);
 the Financial sector (FI);
-the Goverment (GOV);
-the Housholds (HH);
+the Government (GOV);
+the Households (HH);
 the Non-Financial sector (NFI);
 the Rest of the World (ROW).
-In the next subsections we will more in detail explain and define the three balance sheet components using thsese sectors.
+In the next subsections we will more in detail explain and define the three balance sheet components using these sectors.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
 \subsection{Financial interlinkages}\label{sec:financial_interlinkages}
 
 \hspace{0pt}\marginpar{Defining the financial assets}
-As financial positions is a contractual agreement with betseen agents, we need to specify all the exposures between all the sectors that we have specified.
+As financial positions is a contractual agreement between agents, we need to specify all the exposures between all the sectors that we have specified.
 Inspired by \cite{ecb09}, we define these financial relationships among the sectors $x_{ij}$ \marginpar{Perhaps not x?} as the balance sheet exposure of sector $i$ towards sector $j$, where $i,j \in S$, and $S$ \marginpar{Change S to I?} is a index set containing the $N$ sectors in our model.
 As this model will be used in a time series setting we will add the time index $t$.
 
@@ -190,17 +202,17 @@ All possible financial exposures can thus be represented as a $N \times N$ matri
 \hspace{0pt}\marginpar{Properties to the financial assets matrix constitution.}
 By construction there are some properties to this setting:
  \begin{inparaenum}[(i)]
-\item The diagonal when $x_{ij,t} : i=j$ represents a sectors conctractual claims on its' self.
+\item The diagonal when $x_{ij,t} : i=j$ represents a sectors contractual claims on its' self.
 This could be argued for to be zero as a there are no reason for someone to own money to one self.
-But a sector includes heterogenous agents and may thus take on financial agreements within the sector,
-e.g.\ may banks borrow from eachother on different maturitues.
+But a sector includes heterogeneous agents and may thus take on financial agreements within the sector,
+e.g.\ may banks borrow from each other on different maturities.
 The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
-\item\label{p1_2} The summation of the row $i$, excluding the diagonal entries if they are non-zero, corresponds to the financial assets $a_{i,t} = \sum_{j=S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
-\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i=S \setminus j} x_{ij,t}$ other sectors has on sector $j$; and from \ref{p1_2} and \ref{p1_3} we get \item, that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$.
+\item\label{p1_2} The summation of the row $i$, excluding the diagonal entries if they are non-zero, corresponds to the financial assets $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
+\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$; \item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$; and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the liability of someone else.
 \end{inparaenum}
 
 \hspace{0pt}\marginpar{Considerations to the size.}
-We will not use the matrix $X_{t}$ in any time series models itself, it's used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated. As the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a tradeoff between how many sectors to define, and not to loose power in the estimation process. To gain estimation power, we will also investigate if any entries may be insignificant for the analysis, and then drop them out of our models.
+We will not use the matrix $X_{t}$ in any time series models itself, it's used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated. As the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a trade-off between how many sectors to define, and not to loose power in the estimation process. To gain estimation power, we will also investigate if any entries may be insignificant for the analysis, and then drop them out of our models.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -214,7 +226,7 @@ We will not use the matrix $X_{t}$ in any time series models itself, it's used a
 %<*thesis|techdoc>
 \subsection{Defining the model/A five/six sector economy}\label{sec:five_sector_economy}
 
-The balance sheet and interlinkages. \marginpar{This definition of the sectors is preliminary. The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}The model defines five sectors of the economy. Households, non-financial corporations, banks, general goverment and a central bank.
+The balance sheet and interlinkages. \marginpar{This definition of the sectors is preliminary. The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}The model defines five sectors of the economy. Households, non-financial corporations, banks, general government and a central bank.
 The exposures between the sectors can be defined similarly as in \cite{ecb09} page 13, so that the balance sheet exposures are stored in a matrix such the liable sector is in the columns and the other part in the rows. Then, the series would contain one such matrix for each time period.
 
 %Dynamics. The effect of prices. Flows. Assumptions.
@@ -243,7 +255,7 @@ Test variables for integrated/stationarity for decision on what model to use.
 %<*thesis|techdoc>
 \section{Model specification}\label{sec:model_specification}
 
-Why a VAR/VECM-tupe of model.
+Why a VAR/VECM-type of model.
 
 What kind of VAR/VECM-type of model. Assumptions.
 
