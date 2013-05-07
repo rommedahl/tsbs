@@ -76,7 +76,7 @@
 
 %<*thesis|techdoc>
 \abstract{
-\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}
+\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}%
 An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
 When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
 Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
@@ -95,20 +95,24 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 \clearpage
 \section{Introduction}
 
-\hspace{0pt}\marginpar{An anecdotal example.\\Add references.}In the preface of the financial crisis of 2007, there was a boom in the US housing market, and the ricing prices increased the asset values of American homeowners.
+\hspace{0pt}\marginpar{An anecdotal example.\\Add references.}%
+In the preface of the financial crisis of 2007, there was a boom in the US housing market, and the ricing prices increased the asset values of American homeowners.
 The higher prices did however not stop the market turnover, and to finance the acquisitions, households took on more dept.
 In the perspective of a balance sheet, we can say that what had started as a increase on the asset side of American households and thereby increasing their balance sheet, would subsequently make them to take on more debt.
 This was done by either house owners sold their homes to someone with a bigger mortgage debt, or by refinancing their homes with a bigger mortgage and thereby swap their increased equity for cash.
 Thus had the increasing house prices not only had an effect on the balance sheets of the households, but also on the balance sheets of their financial counter parties.
 
-\hspace{0pt}\marginpar{Hypothetical questions.}This is an illustration of how different sectors in the US economy are interlinked with each other in a balance sheet perspective, and how a shock in the asset side in one sector can affect the balance sheets in other sectors.
+\hspace{0pt}\marginpar{Hypothetical questions.}%
+This is an illustration of how different sectors in the US economy are interlinked with each other in a balance sheet perspective, and how a shock in the asset side in one sector can affect the balance sheets in other sectors.
 What we asked our self is if theer might be some dynamics or properties that affects how such a balance sheet shock affects a system of balance sheets.
 We also wondered how such potential properties would behave. Does negative shocks give other estimations than positive shocks, or are there other nonlinearities to it, such that it reacts very differently to very big shocks.
 Also, may there be some kind of relation in a system of balance sheet components (?among the sectors?), such that deviations makes the system correct back to a equilibrium.
 
-\hspace{0pt}\marginpar{Thesis topic. Will be more precisely defined as work progress}The topic of this thesis is to use a framework based on a balance sheet approach, and by applying time series methods test for the presence for system stationarity or cointegrating relationships.
+\hspace{0pt}\marginpar{Thesis topic. Will be more precisely defined as work progress}%
+The topic of this thesis is to use a framework based on a balance sheet approach, and by applying time series methods test for the presence for system stationarity or cointegrating relationships.
 
-\hspace{0pt}\marginpar{Presentation of the sections.}This is the outline of the thesis:
+\hspace{0pt}\marginpar{Presentation of the sections.}%
+This is the outline of the thesis:
 In the \hyperref[sec:theory_previous_research]{second section} we present theories and previous research that is relevant for the thesis.
 In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model.
 The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
@@ -117,7 +121,7 @@ In the \hyperref[sec:model_specification]{sixth section} we will formalize our m
 
 %<*thesis|techdoc>
 \section{Theory \& Previous Research}\label{sec:theory_previous_research}
-\hspace{0pt}\marginpar{Theory and previous research. Really not that much theory for this topic.}
+\hspace{0pt}\marginpar{Theory and previous research. Really not that much theory for this topic.}%
 
 \todo{Write the theory \& previous research section.}
 
@@ -138,22 +142,22 @@ ECB \cite{ecb09}
 %<*thesis|techdoc>
 \section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}
 
-\hspace{0pt}\marginpar{Introduction to the balance sheet approach.}
+\hspace{0pt}\marginpar{Introduction to the balance sheet approach.}%
 So what is a balance sheet approach and why do we use it for this thesis?
 There is other good market data such as prices and rates that is recorded at much higher frequencies.
 The benefit with the balance sheet perspective is that we with the stock data can examine the interlinkages between agents as financial positions occurs on different sides of the balance sheet for respective agent.
 
-\hspace{0pt}\marginpar{Validity of the data.}
+\hspace{0pt}\marginpar{Validity of the data.}%
 Balance sheets is an accounting entity, and we see a risk that it's conventions may be different from the view of an economist.
-\hspace{0pt}\marginpar{Ref}
+\hspace{0pt}\marginpar{Ref}%
 Also may loopholes in the regalutary framework make financial statements prone to manipulation, and biased financial data.
 An example is how the accounting rules made it possible for Japanese Banks to avoid bankruptcy in the the early nighties even though many of them where insolvent.
-\hspace{0pt}\marginpar{Ref}
+\hspace{0pt}\marginpar{Ref}%
 Investigating this is called for but we see this to be out of the scope for a masters thesis.
-\hspace{0pt}\marginpar{Are there papers on this?}
+\hspace{0pt}\marginpar{Are there papers on this?}%
 However we believe and assume that those deviations to be small on the aggregated level for the sectors of the economy, and have little impact on our estimates.
 
-\hspace{0pt}\marginpar{Three components of the balance sheet perspective.}
+\hspace{0pt}\marginpar{Three components of the balance sheet perspective. Add itemized list here}%
 Our balance sheet perspective will include three components: (i) Financial assets that constitutes a contractual claim;
 (ii) Non-financial assets such as tangible property.
 As owned property these assets won't be subject for any kind of mutual relationship between agents, and these assets will only be present on the asset side of an agents balance sheet.
@@ -161,7 +165,9 @@ These assets are still interesting for the analysis as they might be used as col
 (iii) Expected flows such as households future income or governments future tax revenue.
 This as agents can be assumed to structure it's present balance sheet on assumptions about future income.
 
-\hspace{0pt}\marginpar{The sectors.//May change this composition when gathering data, look at ECB/BoJ papers.}
+\hspace{0pt}\marginpar{The sectors.//May change this composition when gathering data, look at ECB/BoJ papers.}%
+
+\todo{Pehaps move the discussion about what sectors to choose to a later section.}
 We will for our analysis divide the economy into it's five/six main sectoral balance:
 the Central Bank (CB);
 the Financial sector (FI);
@@ -173,33 +179,32 @@ In the next subsections we will more in detail explain and define the three bala
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\subsection{Financial interlinkages}\label{sec:financial_interlinkages}
-
-\hspace{0pt}\marginpar{Defining the financial assets}
-As financial positions is a contractual agreement between agents, we need to specify all the exposures between all the sectors that we have specified.
-Inspired by \cite{ecb09}, we define these financial relationships among the sectors $x_{ij}$ \marginpar{Perhaps not x?} as the balance sheet exposure of sector $i$ towards sector $j$, where $i,j \in S$, and $S$ \marginpar{Change S to I?} is a index set containing the $N$ sectors in our model.
+f
+\hspace{0pt}\marginpar{Defining the financial assets}%
+As financial positions is a contractual agreement between agents, we need to specify all the exposures between the sectors in the model.
+Inspired by \cite{ecb09}, we define the value of the financial relationships $x_{ij}$, where $i$ is the holding part and $j$ is the issuing part. 
+\marginpar{Perhaps not x?}% where $i,j \in S$, and $S$ is a index set containing the $N$ sectors in our model.
+\marginpar{Change S to I, and describe it before this section?}%
 As this model will be used in a time series setting we will add the time index $t$.
-
-\begin{equation}\label{exposure}
-	x_{ij,t} : i,j \in S : |S|=N
+\begin{equation}
+	\label{exposure}%
+	x_{ij,t} : i,j \in S% : |S|=N
 \end{equation}
-
-All possible financial exposures can thus be represented as a $N \times N$ matrix $X_{t}$.
-
-\begin{equation}\label{exposure_matrix}
-\begin{split}
-	X_{t} &=
+All possible financial exposures can thus be represented as a $N \times N$ matrix, % $X_{t}$.
+%
+\begin{equation}
+	\label{exposure_matrix}
+	X_{t} =
 	\begin{bmatrix}
 		x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
 		\vdots & \ddots & \vdots &  & \vdots \\
 		x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
 		\vdots &  & \vdots & \ddots & \vdots \\	
 		x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
-	\end{bmatrix}
-\end{split}
+	\end{bmatrix}.
 \end{equation}
-
-\hspace{0pt}\marginpar{Properties to the financial assets matrix constitution.}
+%
+\hspace{0pt}\marginpar{Properties to the financial assets matrix constitution.}%
 By construction there are some properties to this setting:
  \begin{inparaenum}[(i)]
 \item The diagonal when $x_{ij,t} : i=j$ represents a sectors contractual claims on its' self.
@@ -208,15 +213,36 @@ But a sector includes heterogeneous agents and may thus take on financial agreem
 e.g.\ may banks borrow from each other on different maturities.
 The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
 \item\label{p1_2} The summation of the row $i$, excluding the diagonal entries if they are non-zero, corresponds to the financial assets $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
-\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$; \item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$; and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the liability of someone else.
+\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$; \item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$; and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the/a [financial] liability of someone else.
 \end{inparaenum}
 
-\hspace{0pt}\marginpar{Considerations to the size.}
+\hspace{0pt}\marginpar{Considerations to size. Perhaps move to later paragraph, or to Emp.Strat.}%
 We will not use the matrix $X_{t}$ in any time series models itself, it's used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated. As the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a trade-off between how many sectors to define, and not to loose power in the estimation process. To gain estimation power, we will also investigate if any entries may be insignificant for the analysis, and then drop them out of our models.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\subsection{Tangible property}\label{sec:tangible_property}
+\subsection{Real/Tangible property/assets}\label{sec:tangible_property}
+%
+Tangible property is owned and has a value merely out of it's existence. We define the value of the property $p_{i}$, where $i$ is the the owning sector. In the time series setting we have
+%
+\begin{equation}
+	\label{exposure}%
+	p_{i,t} : i \in S,% : |S|=N
+\end{equation} 
+%
+that we can represent as the vector
+%
+\begin{equation}
+	\label{property_vector}%
+	p_{t} =
+	\begin{bmatrix}
+		p_{1,t}\\
+		\vdots\\
+		p_{i,t}\\
+		\vdots\\	
+		p_{N,t}
+	\end{bmatrix}.
+\end{equation}
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -281,7 +307,8 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
 
 %<*thesis|techdoc>
 \section{Sandbox}\label{sec:sandbox}
-\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
+\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}%
+Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
 
 Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
 
@@ -297,7 +324,9 @@ Lite text emellan.
 
 \begin{table}[height]
 \caption[Text that shows up in the table listing.]{Text describing this figure over the table.}
+
 \label{tab:sb_table}
+\centering
 \begin{tabular}{ l | c || r }
   1 & 2 & 3 \\
   4 & 5 & 6 \\
