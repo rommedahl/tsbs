@@ -1,11 +1,14 @@
 #!/bin/sh
 
+# add html export for laters MS Office grammar check, http://www.physics.usyd.edu.au/guides/spell-grammar-latex.html
+
 #[sudo chmod a+x script]
 
-rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lof *.log *.lot *.out *.pdf *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
+rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lod *.lof *.log *.lot *.out *.pdf *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
 
 # Knits the workdoc to create the DOCSTRIP installation file workdoc.ins
 Rscript -e "library(knitr); knit('workdoc.rnw')"
+rm -r -f figure *.tex
 
 #  Docstrips the workdoc.rnw as told in workdoc.ins; creating the .rnw files
 latex workdoc.ins
@@ -17,6 +20,12 @@ pdflatex -interaction=batchmode -halt-on-error thesis
 bibtex thesis
 pdflatex -interaction=batchmode -halt-on-error thesis
 pdflatex -interaction=batchmode -halt-on-error thesis
+#detex thesis > thesis.txt	# Creates a text version output.
+
+# Output to RTF for spelling and grammar checking in a word processor.
+#latex thesisn
+#bibtex thesis
+#latex2rtf thesis
 
 # pdflatex RJwrapper
 
@@ -27,4 +36,4 @@ bibtex techdoc
 pdflatex -interaction=batchmode -halt-on-error techdoc
 pdflatex -interaction=batchmode -halt-on-error techdoc
 
-rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lof *.l0g *.lot *.out *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
+rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lod *.lof *.log *.lot *.out *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary

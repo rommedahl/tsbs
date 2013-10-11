@@ -23,11 +23,11 @@
 
 %Document settings
 \RequirePackage[l2tabu, orthodox]{nag}	% The nag package warns you for incorrect LaTeX usage
-\documentclass[12pt, a4paper, oneside]{article}	%draft option
-%\documentclass[12pt, article, a4paper, oneside]{memoir}	%draft option
+\documentclass[12pt, a4paper, oneside]{article}	% option
+%\documentclass[12pt, article, a4paper, oneside]{memoir}	% option
 %\documentclass[11pt,article,oneside]{memoir}
 
-\title{Thesis Title}
+\title{Cointegrating Relationships\\in a Balance Sheet Approach}
 %\subtitle{The subtitle}	%Not in standard class.
 \author{by Marcus Rommedahl}
 
@@ -36,7 +36,7 @@
 %\usepackage{natbib}		% Adds additional styles to bibtex.
 \usepackage[citestyle=authoryear]{biblatex}	% Use instead of natbib
 \addbibresource{ref.bib}	% Use instead of natbib
-\usepackage{showframe}	% Shows margins by asserting frames.
+%\usepackage{showframe}	% Shows margins by asserting frames.
 \usepackage{mathtools}	% Loads amsmath aswell
 \usepackage{paralist}	% Inline lists
 %\usepackage[a4paper]{geometry}	%Makes less marings on the sides. Do not load if using memoir.
@@ -48,6 +48,10 @@
 
 \usepackage[breaklinks, colorlinks=false, linkbordercolor={0 0 1}]{hyperref}	%Ex­ten­sive sup­port for hy­per­text. Makes it possible to click internal links. Load after biblatex. It should be loaded at the end of the preamble.
 
+\usepackage{multirow}	% Make multiple rows in tables.
+\usepackage[flushleft]{threeparttable}
+%\usepackage{booktabs}
+
 % Commands
 
 % Make margin notes font size tiny
@@ -55,7 +59,7 @@
 \renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
 {\raggedright\tiny #1}}
 
-
+\setcounter{secnumdepth}{1}	% Set section numbering level
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -64,9 +68,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\maketitle
-
-\todo{Come up with a title}
+\textsc{\LARGE Stockholm School of Economics}
+{\let\newpage\relax\maketitle}
+%\maketitle
 
 \todo{Add supervisor information}
 
@@ -81,6 +85,10 @@ An abstract is a brief summary of a research article, thesis, review, conference
 When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
 Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\clearpage
 \listoftodos
 %</thesis|techdoc>
 
@@ -93,7 +101,7 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 
 %<*thesis|techdoc>
 \clearpage
-\section{Introduction}
+\section{Introduction}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \hspace{0pt}\marginpar{An anecdotal example.\\Add references.}%
 In the preface of the financial crisis of 2007, there was a boom in the US housing market, and the ricing prices increased the asset values of American homeowners.
@@ -120,7 +128,7 @@ In the \hyperref[sec:model_specification]{sixth section} we will formalize our m
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{Theory \& Previous Research}\label{sec:theory_previous_research}
+\section{Theory \& Previous Research}\label{sec:theory_previous_research}%%%%%%%
 \hspace{0pt}\marginpar{Theory and previous research. Really not that much theory for this topic.}%
 
 \todo{Write the theory \& previous research section.}
@@ -131,7 +139,7 @@ In the \hyperref[sec:model_specification]{sixth section} we will formalize our m
 %</thesis|techdoc>
 
 %<*dump>
-\section{Previous Research}\label{sec:previous_research}
+\section{Previous Research}\label{sec:previous_research}%%%%%%%%%%%%%%%%%%%%%%%%
 Merge to the previous section
 
 IMF \cite{imf02}
@@ -140,7 +148,7 @@ ECB \cite{ecb09}
 %</dump>
 
 %<*thesis|techdoc>
-\section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}
+\section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}%%%%%%%%%%
 
 \hspace{0pt}\marginpar{Introduction to the balance sheet approach.}%
 So what is a balance sheet approach and why do we use it for this thesis?
@@ -148,7 +156,7 @@ There is other good market data such as prices and rates that is recorded at muc
 The benefit with the balance sheet perspective is that we with the stock data can examine the interlinkages between agents as financial positions occurs on different sides of the balance sheet for respective agent.
 
 \hspace{0pt}\marginpar{Validity of the data.}%
-Balance sheets is an accounting entity, and we see a risk that it's conventions may be different from the view of an economist.
+Balance sheets is an accounting entity, and we see a risk that its conventions may be different from the view of an economist.
 \hspace{0pt}\marginpar{Ref}%
 Also may loopholes in the regalutary framework make financial statements prone to manipulation, and biased financial data.
 An example is how the accounting rules made it possible for Japanese Banks to avoid bankruptcy in the the early nighties even though many of them where insolvent.
@@ -160,15 +168,15 @@ However we believe and assume that those deviations to be small on the aggregate
 \hspace{0pt}\marginpar{Three components of the balance sheet perspective. Add itemized list here}%
 Our balance sheet perspective will include three components: (i) Financial assets that constitutes a contractual claim;
 (ii) Non-financial assets such as tangible property.
-As owned property these assets won't be subject for any kind of mutual relationship between agents, and these assets will only be present on the asset side of an agents balance sheet.
+As owned property these assets will not be subject for any kind of mutual relationship between agents, and these assets will only be present on the asset side of an agents balance sheet.
 These assets are still interesting for the analysis as they might be used as collateral for loans, and therefore their valuation might have an direct or indirect balance sheet effect;
 (iii) Expected flows such as households future income or governments future tax revenue.
-This as agents can be assumed to structure it's present balance sheet on assumptions about future income.
+This as agents can be assumed to structure its present balance sheet on assumptions about future income.
 
 \hspace{0pt}\marginpar{The sectors.//May change this composition when gathering data, look at ECB/BoJ papers.}%
 
 \todo{Pehaps move the discussion about what sectors to choose to a later section.}
-We will for our analysis divide the economy into it's five/six main sectoral balance:
+We will for our analysis divide the economy into its five/six main sectoral balance:
 the Central Bank (CB);
 the Financial sector (FI);
 the Government (GOV);
@@ -176,19 +184,19 @@ the Households (HH);
 the Non-Financial sector (NFI);
 the Rest of the World (ROW).
 In the next subsections we will more in detail explain and define the three balance sheet components using these sectors.
-%</thesis|techdoc>
+%
+\subsection{Financial interlinkages}\label{sec:financial_interlinkages}
 
-%<*thesis|techdoc>
-f
 \hspace{0pt}\marginpar{Defining the financial assets}%
 As financial positions is a contractual agreement between agents, we need to specify all the exposures between the sectors in the model.
-Inspired by \cite{ecb09}, we define the value of the financial relationships $x_{ij}$, where $i$ is the holding part and $j$ is the issuing part. 
-\marginpar{Perhaps not x?}% where $i,j \in S$, and $S$ is a index set containing the $N$ sectors in our model.
+Inspired by \cite{ecb09}, we define the value of the financial relationships $x_{ij}$, where $i$ is the holding part and $j$ is the issuing part,
+\marginpar{Perhaps not x?}%
+where $i,j \in S$, and $S$ is a index set containing the $N$ sectors in our model.
 \marginpar{Change S to I, and describe it before this section?}%
 As this model will be used in a time series setting we will add the time index $t$.
 \begin{equation}
 	\label{exposure}%
-	x_{ij,t} : i,j \in S% : |S|=N
+	x_{ij,t} : i,j \in S.% : |S|=N
 \end{equation}
 All possible financial exposures can thus be represented as a $N \times N$ matrix, % $X_{t}$.
 %
@@ -207,23 +215,80 @@ All possible financial exposures can thus be represented as a $N \times N$ matri
 \hspace{0pt}\marginpar{Properties to the financial assets matrix constitution.}%
 By construction there are some properties to this setting:
  \begin{inparaenum}[(i)]
-\item The diagonal when $x_{ij,t} : i=j$ represents a sectors contractual claims on its' self.
+\item The diagonal when $x_{ij,t} : i=j$ represents a sectors contractual claims on itself.
 This could be argued for to be zero as a there are no reason for someone to own money to one self.
 But a sector includes heterogeneous agents and may thus take on financial agreements within the sector,
 e.g.\ may banks borrow from each other on different maturities.
 The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
-\item\label{p1_2} The summation of the row $i$, excluding the diagonal entries if they are non-zero, corresponds to the financial assets $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
-\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$; \item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$; and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the/a [financial] liability of someone else.
+\item\label{p1_2} The summation of the row $i$, excluding the diagonal entries, corresponds to the financial assets $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
+\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$;
+\item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$;
+and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the/a [financial] liability of someone else.
 \end{inparaenum}
 
-\hspace{0pt}\marginpar{Considerations to size. Perhaps move to later paragraph, or to Emp.Strat.}%
-We will not use the matrix $X_{t}$ in any time series models itself, it's used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated. As the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a trade-off between how many sectors to define, and not to loose power in the estimation process. To gain estimation power, we will also investigate if any entries may be insignificant for the analysis, and then drop them out of our models.
+We will not use the matrix $X_{t}$ in any time series models itself, it is used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\subsection{Real/Tangible property/assets}\label{sec:tangible_property}
+\subsection{[Discounted] Expected [future] [Financial] flows}\label{sec:expected_flows}%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The financial flows we discuessed above are the result of contractual agreements.
+But flows as e.g.\ wages, sales and tax revenue are not generally reliant on a contract, but is a present state of transactions.
+We assumes that the agents has expectations on the future flows, and takes desicions upon the present value out of those expectations.
+We define this as the expected value as the sum of discounted future flows, $e_{ij}$, where $i$ is the recieving part and $j$ is the issuing part.
+$\beta_{t}$ is the one period discounting factor at time $t$.
+Thus $e_{ij}$ will be a asset in the balance sheet for the recieving part $i$, and on the liability for the paying(?) part $j$.
+\marginpar{Change S to I, and describe it before this section?}%
+As this model will be used in a time series setting we will add the time index $t$.
+Formally it will be defined as
+\begin{equation}
+	\label{exposure}%
+	e_{ij,t} = \sum_{t'=t}^{\infty} \left( \prod_{t''=t}^{t'} E_{t}(\beta_{t''}) \right) E_{t}(e_{ij,t''}): i,j \in S.% : |S|=N
+\end{equation}
 %
-Tangible property is owned and has a value merely out of it's existence. We define the value of the property $p_{i}$, where $i$ is the the owning sector. In the time series setting we have
+(or ?)
+%
+\begin{equation}
+	\label{exposure}%
+	e_{ij,t} = \sum_{t'=0}^{\infty} \left( \prod_{t''=0}^{t'} E_{t}(\beta_{t+t''}) \right) E_{t}(e_{ij,t+t''}): i,j \in S.% : |S|=N
+\end{equation}
+%
+Out of all possible flows between the agents
+The discounted flows between all the agents can be represented as a $N \times N$ matrix, % $X_{t}$.
+%
+\todo{change from X to, what? E already used above}
+	\label{exposure_matrix}
+\begin{equation}
+	X_{t} =
+	\begin{bmatrix}
+		x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
+		\vdots & \ddots & \vdots &  & \vdots \\
+		x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
+		\vdots &  & \vdots & \ddots & \vdots \\	
+		x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
+	\end{bmatrix}.
+\end{equation}
+%
+\hspace{0pt}\marginpar{Properties to the financial flows matrix constitution.}%
+Those flows has properties analogously to the financial interlinkages in the previous section.
+\begin{inparaenum}[(i)]
+\item The diagonal $x_{ij,t} : i=j$ represents the flows within the sector.
+Firms will do transactions with other firms;
+\item\label{p2_2} The summation of the row $i$, excluding the diagonal entries, corresponds to the financial flows $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is recieved by sector $i$ from the other sectors;
+\item\label{p2_3} Analogously to \ref{p2_2}, columns corresponds to the flows $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ from sector $j$ to the other sectors;
+\item from \ref{p2_2} and \ref{p2_3} we get that the net flow of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$;
+and \item, if looking only at only financial assets, the aggregated net flows must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, as one sectors financial outflow, is the inflow of another sector.
+\end{inparaenum}
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+\subsection{Real/Tangible property/assets}\label{sec:tangible_property}%%%%%%%%%
+%
+\hspace{0pt}\marginpar{What about RoW tangible property? Perhaps disc. in later section.}%
+Tangible property is owned and has a value merely out of its existence.
+We define the value of the property $p_{i}$, where $i$ is the the owning sector.
+In the time series setting we thus get
 %
 \begin{equation}
 	\label{exposure}%
@@ -245,29 +310,146 @@ that we can represent as the vector
 \end{equation}
 %</thesis|techdoc>
 
+
 %<*thesis|techdoc>
-\subsection{Expected flows}\label{sec:expected_flows}
+\section{Empirical strategy}\label{sec:empirical_strategy}%%%%%%%%%%%%%%%%%%%%%%
+
+The aim of this section is to evaluation the options we have when defining or model, so that we later will get get a good and accurate estimation.
+This will be conducted in [X] steps.
+We will first decide what sectors to include into the model, which has to be traded for power in the estimation process.
+Then we will evaluate the financial interlinkages, flows and real/tangible property/assets of the sectors to decide what entries we will keep in the model.
+Nonexistent and insignificant entries will be dropped out of the model.
+Next step is to find a subject economy on which there are sufficent time series data, so we can turn our entries into time series variables.
+After this, we can continue to the next section and data evaluation.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\subsection{Defining the model/A five/six sector economy}\label{sec:five_sector_economy}
+\subsection{Defining [the] sectors}\label{sec:defining_sectors}
 
-The balance sheet and interlinkages. \marginpar{This definition of the sectors is preliminary. The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}The model defines five sectors of the economy. Households, non-financial corporations, banks, general government and a central bank.
-The exposures between the sectors can be defined similarly as in \cite{ecb09} page 13, so that the balance sheet exposures are stored in a matrix such the liable sector is in the columns and the other part in the rows. Then, the series would contain one such matrix for each time period.
+To have a interesting model, we want do define valid sectors with as heterogeneous agents as possible.
+In table~\ref{tab:sector_division} is a illustration of how the economy can be divided into sectors, in the range from a one global economy sector, to a very fine-grained division of sectors.
+But as the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a trade-off between how many sectors to define, and not to loose power in the estimation process.
+As an illustration we can assume a simple simple time series model with $s$ sectors and $n$ lags.
+If we would keep all entries in the $[X]$ and $[F]$ matrices and the vector $p_{t}$, we would end up with $(2s^2+s)n$ estimators.
+Table~\ref{tab:tradeoff_table} shows how fast the number of estimators increases with the numbers of sectors and lags.
+Anoter aspect to consider is data availability, that we can find data for the sectors to use with our model. 
+
+\cite{ecb09} defines seven sectors: households, non-financial corporations, banks, insurance and pension fund companies, other financial intermediaries, general government, and the rest of the world.
+But we are also interested in how the central bank and the social security and pension funds, all sub-sectors to the general government sector in \cite{ecb09}.
+Thus we have nine sectors of interest, which are our preferred choice of sectors.
+But to have that many sectors is dependent on that we can reduce many combinations to have a good estimate.
+Therefore we do also have two fallback options presented in table~\ref{tab:sector_options}.
+%
+\marginpar{This definition of the sectors is preliminary.
+The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}
+%
+\begin{table}
+\centering
+\begin{threeparttable}
+\caption[Different levels of sector division]{Different levels of sector division}
+\label{tab:sector_division}
+\centering
+\begin{tabular}{| c || c | c | c | c | c | c |}
+\cline{2-7}
+\multicolumn{1}{r||}{} & \multicolumn{6}{|c|}{Level} \\ \cline{2-7}
+\multicolumn{1}{r||}{} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+\multirow{6}{*}{Sector} & \multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Global\\ \footnotesize Economy\end{tabular}} &
+\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}
+&	21	&	36	&	55	&	78	\\	\cline{3-7}
+&	&
+\multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Subject\\ \footnotesize Economy\end{tabular}}	&	42	&	72	&	110	&	156	\\	\cline{4-7}
+&	&	&	63	&	108	&	165	&	234	\\	\cline{4-7}
+&	&	&	84	&	144	&	220	&	312	\\	\cline{4-7}
+&	&	&	105	&	180	&	275	&	390	\\	\cline{4-7}
+&	&	&	126	&	216	&	330	&	468	\\	\hline
+\end{tabular}
+\begin{tablenotes}
+\scriptsize
+\item Different levels of sector division.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+\centering
+\begin{threeparttable}
+\caption[Trade-off: Sectors and Lags vs. Restricions on degrees of freedom]{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
+\label{tab:tradeoff_table}
+\centering
+\begin{tabular}{| c | c || c | c | c | c | c | c |}
+\cline{3-8}
+\multicolumn{1}{r}{} & & \multicolumn{6}{|c|}{Sectors} \\ \cline{3-8}
+\multicolumn{1}{r}{} & & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+\multirow{6}{*}{Lags} &
+0	&	3	&	10	&	21	&	36	&	55	&	78	\\	\cline{2-8}
+&
+1	&	6	&	20	&	42	&	72	&	110	&	156	\\	\cline{2-8}
+&
+2	&	9	&	30	&	63	&	108	&	165	&	234	\\	\cline{2-8}
+&
+3	&	12	&	40	&	84	&	144	&	220	&	312	\\	\cline{2-8}
+&
+4	&	15	&	50	&	105	&	180	&	275	&	390	\\	\cline{2-8}
+&
+5	&	18	&	60	&	126	&	216	&	330	&	468	\\	\hline
+\end{tabular}
+\begin{tablenotes}
+\scriptsize
+\item The numbers show how many estimations to be made if we allow for all possible financial claims and flows in between the sectors. As we can see, this numbers grows fast as we add sectors and lags.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+\centering
+\begin{threeparttable}
+\caption[Trade-off: Sectors and Lags vs. Restricions on degrees of freedom]{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
+\label{tab:sector_options}
+\centering
+\begin{tabular}{| c || c | c | c |}
+\cline{2-4}
+\multicolumn{1}{r||}{} & \multicolumn{3}{|c|}{Options} \\ \cline{2-4}
+\multicolumn{1}{r||}{} & Preferred & Fallback 1 & Fallback 2 \\ \hline \hline
+\multirow{12}{*}{Sectors} &
+\footnotesize Households	&	Households	&	Households	\\	\cline{2-4}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}	\\	\cline{2-4}
+&
+Banks	&	Banks	&	\multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Financial \\ \footnotesize Corporations \end{tabular}}	\\	\cline{2-3}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Insurance and \\ \footnotesize pension fund \\ companies\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Insurance and \\ \footnotesize pension fund \\ companies\end{tabular}	&	\\	\cline{2-3}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Other Financial\\ \footnotesize Intermediaries\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Other Financial\\ \footnotesize Intermediaries\end{tabular}	&	\\	\cline{2-4}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Central\\ \footnotesize Government\end{tabular}	&	\multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize General\\ \footnotesize Government\end{tabular}}	&	\multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize General\\ \footnotesize Government\end{tabular}}	\\	\cline{2-2}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Social security \\ \footnotesize Pension system \end{tabular}	&	&	\\	\cline{2-2}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Central\\ \footnotesize Bank \end{tabular}	&	&	\\	\cline{2-4}
+&
+\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}	\\	\hline \hline
+No	&	9	&	7	&	5	\\	\hline
+\end{tabular}
+\begin{tablenotes}
+\scriptsize
+\item The numbers show how many estimations to be made if we allow for all possible financial claims and flows in between the sectors. As we can see, this numbers grows fast as we add sectors and lags.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 
 %Dynamics. The effect of prices. Flows. Assumptions.
 
-%</thesis|techdoc>
+%The first thing we will do in the empirical strategy is to define a proto-model such that we can chose what variables to evaluate.
+%From the variables in the proto-model we will also choose or subject of analysis, as availability of data is a crucial aspect.
+%First, all the variables need to have a sample rate that meets a minimal requirement, as the data has to be downsampled to the sample rate of the variable with the lowest sample rate.
+%Also, the data series needs to bee long enough to later get a good model estimation. 
+%
+%
+%As the choice of time series model is very dependent on the properties of the variables the evaluation process is very crucial.
 
-%<*thesis|techdoc>
-\section{Empirical strategy}\label{sec:empirical_strategy}
-
-The first thing we will do in the empirical strategy is to define a proto-model such that we can chose what variables to evaluate. From the variables in the proto-model we will also choose or subject of analysis, as availability of data is a crucial aspect. First, all the variables need to have a sample rate that meets a minimal requirement, as the data has to be downsampled to the sample rate of the variable with the lowest sample rate. Also, the data series needs to bee long enough to later get a good model estimation. 
-
-As the choice of time series model is very dependent on the properties of the variables the evaluation process is very crucial.
-
-In short.
-Test variables for integrated/stationarity for decision on what model to use. 
+%In short.
+%Test variables for integrated/stationarity for decision on what model to use. 
 
 %Dependent on data avaliability.
 %US/EU/OECD-country?
@@ -279,7 +461,14 @@ Test variables for integrated/stationarity for decision on what model to use.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{Model specification}\label{sec:model_specification}
+\subsection{Evaluating [the] entries}\label{sec:evaluating_entries}
+
+Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+%</thesis|techdoc>
+
+
+%<*thesis|techdoc>
+\section{Data evaluation \& Model specification}\label{sec:model_specification}%%%%%%%%%%%%%%%%%%%%
 
 Why a VAR/VECM-type of model.
 
@@ -290,15 +479,15 @@ Why different alternations/specifications of the model.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{Estimation results}\label{sec:estimation_results}
+\section{Estimation results}\label{sec:estimation_results}%%%%%%%%%%%%%%%%%%%%%%
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{Analysis}\label{sec:analysis}
+\section{Analysis}\label{sec:analysis}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\section{Conclusions}\label{sec:conclusions}
+\section{Conclusions}\label{sec:conclusions}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %</thesis|techdoc>
 
 %<*techdoc>
@@ -306,7 +495,8 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
 %</techdoc>
 
 %<*thesis|techdoc>
-\section{Sandbox}\label{sec:sandbox}
+%\clearpage
+\section{Sandbox}\label{sec:sandbox}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}%
 Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
 
@@ -323,8 +513,7 @@ plot(rnorm(100))
 Lite text emellan.
 
 \begin{table}[height]
-\caption[Text that shows up in the table listing.]{Text describing this figure over the table.}
-
+\caption[Text that shows up in the table listing.]{Text describing this figure over the table. Text describing this figure over the table.}
 \label{tab:sb_table}
 \centering
 \begin{tabular}{ l | c || r }
@@ -335,6 +524,7 @@ Lite text emellan.
 \end{table}
 
 You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
+%</thesis|techdoc>
 
 %<*thesis>
 \clearpage
@@ -343,6 +533,11 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 \printbibliography	% Using biblatex
 %</thesis>
 
+%<*thesis>
+
+%</thesis>
+
+%<*thesis|techdoc>
 \end{document}
 %</thesis|techdoc>
 
