@@ -371,7 +371,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
 \begin{table}
 \centering
 \begin{threeparttable}
-\caption[Different levels of sector division]{Different levels of sector division}
+\caption{Different levels of sector division}
 \label{tab:sector_division}
 \centering
 \begin{tabular}{| c || c | c | c | c | c | c |}
@@ -398,7 +398,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
 \begin{table}
 \centering
 \begin{threeparttable}
-\caption[Trade-off: Sectors and Lags vs. Restricions on degrees of freedom]{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
+\caption{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
 \label{tab:tradeoff_table}
 \centering
 \begin{tabular}{| c | c || c | c | c | c | c | c |}
@@ -428,7 +428,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
 \begin{table}
 \centering
 \begin{threeparttable}
-\caption[Trade-off: Sectors and Lags vs. Restricions on degrees of freedom]{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
+\caption{Options for the set of Sectors}
 \label{tab:sector_options}
 \centering
 \begin{tabular}{| c || c | c | c |}
@@ -457,7 +457,7 @@ No	&	9	&	7	&	5	\\	\hline
 \end{tabular}
 \begin{tablenotes}
 \scriptsize
-\item The numbers show how many estimations to be made if we allow for all possible financial claims and flows in between the sectors. As we can see, this numbers grows fast as we add sectors and lags.
+\item Table notes
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -465,22 +465,22 @@ No	&	9	&	7	&	5	\\	\hline
 \begin{table}\footnotesize
 \centering
 \begin{threeparttable}
-\caption[Examination of Financial Interlinkages]{Examination of Financial Interlinkages}
+\caption{Examination of Financial Interlinkages}
 \label{tab:examination_financial_interlinkages}
 \centering
 \begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
 \cline{3-11}
 \multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Issuing Part} \\ \cline{3-11}
 \multicolumn{2}{r||}{} &	\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
-\multirow{10}{*}{\rotatebox{90}{Holding Part}} & \footnotesize HH	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize NFC	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize MFI	&	&	&	$\bullet$	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize INS	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize OFI	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize CG	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize SP	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize CB	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize RoW	&	&	&	&	&	&	&	&	&	\\	\hline
+\multirow{10}{*}{\rotatebox{90}{Holding Part}} & \footnotesize HH	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize NFC	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize MFI	&	?	&	?	&	$\bullet$	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize INS	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize OFI	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize CG	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize SP	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize CB	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize RoW	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\hline
 \end{tabular}
 \begin{tablenotes}
 \scriptsize
@@ -492,22 +492,22 @@ No	&	9	&	7	&	5	\\	\hline
 \begin{table}\footnotesize
 \centering
 \begin{threeparttable}
-\caption[Examination of Financial Flows]{Examination of Financial Flows}
+\caption{Examination of Financial Flows}
 \label{tab:examination_financial_flows}
 \centering
 \begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
 \cline{3-11}
 \multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Paying Part} \\ \cline{3-11}
 \multicolumn{2}{r||}{} &	\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
-\multirow{10}{*}{\rotatebox{90}{Receiving Part}} & \footnotesize HH	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize NFC	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize MFI	&	&	&	$\bullet$	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize INS	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize OFI	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize CG	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize SP	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize CB	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
-& \footnotesize RoW	&	&	&	&	&	&	&	&	&	\\	\hline
+\multirow{10}{*}{\rotatebox{90}{Receiving Part}} & \footnotesize HH	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize NFC	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize MFI	&	?	&	?	&	$\bullet$	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize INS	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize OFI	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize CG	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize SP	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize CB	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
+& \footnotesize RoW	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\hline
 \end{tabular}
 \begin{tablenotes}
 \scriptsize
@@ -516,6 +516,24 @@ No	&	9	&	7	&	5	\\	\hline
 \end{threeparttable}
 \end{table}
 
+\begin{table}\footnotesize
+\centering
+\begin{threeparttable}
+\caption{Examination of Tangible Assets}
+\label{tab:examination_tangible assets}
+\centering
+\begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+\hline
+\multicolumn{9}{|c|}{Owning Sector} \\ \hline
+\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
+?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\hline
+\end{tabular}
+\begin{tablenotes}
+\scriptsize
+\item A dot is representing there is a significant ownership of tangible assets. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
 %Dynamics. The effect of prices. Flows. Assumptions.
 
