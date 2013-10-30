@@ -29,7 +29,15 @@
 
 \title{Cointegrating Relationships\\in a Balance Sheet Approach}
 %\subtitle{The subtitle}	%Not in standard class.
-\author{by Marcus Rommedahl}
+\author{
+\emph{Author}\\
+Marcus Rommedahl\\
+\texttt{\small 40310@student.hhs.se}
+\and
+\emph{Supervisor}\\
+Richard Sandberg\\
+\texttt{\small rickard.sandberg@hhs.se}
+}
 
 % Packages to use
 
@@ -54,6 +62,15 @@
 
 % Commands
 
+% Set values for PDF-info.
+\hypersetup
+{
+    pdfauthor={Marcus Rommedahl},
+    pdfsubject={Economics, Macroeconomics},
+    pdftitle={Cointegrating Relationships in a Balance Sheet Approach},
+    pdfkeywords={Economics, Macroeconomics, Time Series, Vector Error Correction Models}
+}
+
 % Make margin notes font size tiny
 \let\oldmarginpar\marginpar
 \renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
@@ -66,25 +83,43 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dokument                                                                   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
-\textsc{\LARGE Stockholm School of Economics}
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+
+\textsc{\LARGE Stockholm School of Economics}\\
+\vspace{1cm}
+\textsc{\Large Master Thesis in Economics}
 {\let\newpage\relax\maketitle}
 %\maketitle
 
-\todo{Add supervisor information}
+\thispagestyle{empty}
 
-\todo{Add key words and other fancy stuff}
-
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
 \abstract{
 \hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}%
 An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
 When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
 Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 
+\vfill
+
+\begin{flushleft} 
+\small
+\emph{JEL Classification:} To, be, added\\[0.125cm]
+
+\emph{Keywords:} To, be added
+\end{flushleft}
+
+\end{center}
+\end{titlepage}
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -101,6 +136,8 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 
 %<*thesis|techdoc>
 \clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
 \section{Introduction}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \hspace{0pt}\marginpar{An anecdotal example.\\Add references.}%
@@ -173,18 +210,6 @@ These assets are still interesting for the analysis as they might be used as col
 (iii) Expected flows such as households future income or governments future tax revenue.
 This as agents can be assumed to structure its present balance sheet on assumptions about future income.
 
-\hspace{0pt}\marginpar{The sectors.//May change this composition when gathering data, look at ECB/BoJ papers.}%
-
-\todo{Pehaps move the discussion about what sectors to choose to a later section.}
-We will for our analysis divide the economy into its five/six main sectoral balance:
-the Central Bank (CB);
-the Financial sector (FI);
-the Government (GOV);
-the Households (HH);
-the Non-Financial sector (NFI);
-the Rest of the World (ROW).
-In the next subsections we will more in detail explain and define the three balance sheet components using these sectors.
-%
 \subsection{Financial interlinkages}\label{sec:financial_interlinkages}
 
 \hspace{0pt}\marginpar{Defining the financial assets}%
@@ -437,6 +462,60 @@ No	&	9	&	7	&	5	\\	\hline
 \end{threeparttable}
 \end{table}
 
+\begin{table}\footnotesize
+\centering
+\begin{threeparttable}
+\caption[Examination of Financial Interlinkages]{Examination of Financial Interlinkages}
+\label{tab:examination_financial_interlinkages}
+\centering
+\begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
+\cline{3-11}
+\multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Issuing Part} \\ \cline{3-11}
+\multicolumn{2}{r||}{} &	\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
+\multirow{10}{*}{\rotatebox{90}{Holding Part}} & \footnotesize HH	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize NFC	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize MFI	&	&	&	$\bullet$	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize INS	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize OFI	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize CG	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize SP	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize CB	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize RoW	&	&	&	&	&	&	&	&	&	\\	\hline
+\end{tabular}
+\begin{tablenotes}
+\scriptsize
+\item A dot is representing there is a significant amount of financial interlinkage between the the holding and issuing parts. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}\footnotesize
+\centering
+\begin{threeparttable}
+\caption[Examination of Financial Flows]{Examination of Financial Flows}
+\label{tab:examination_financial_flows}
+\centering
+\begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
+\cline{3-11}
+\multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Paying Part} \\ \cline{3-11}
+\multicolumn{2}{r||}{} &	\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
+\multirow{10}{*}{\rotatebox{90}{Receiving Part}} & \footnotesize HH	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize NFC	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize MFI	&	&	&	$\bullet$	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize INS	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize OFI	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize CG	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize SP	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize CB	&	&	&	&	&	&	&	&	&	\\	\cline{2-11}
+& \footnotesize RoW	&	&	&	&	&	&	&	&	&	\\	\hline
+\end{tabular}
+\begin{tablenotes}
+\scriptsize
+\item A dot is representing there is a significant amount of financial flows between the the receiving and paying parts. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 
 %Dynamics. The effect of prices. Flows. Assumptions.
 
@@ -534,7 +613,9 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 %</thesis>
 
 %<*thesis>
-
+\clearpage
+\appendix
+\section{Appendix}
 %</thesis>
 
 %<*thesis|techdoc>
