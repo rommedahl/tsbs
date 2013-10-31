@@ -562,6 +562,19 @@ No	&	9	&	7	&	5	\\	\hline
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
+\subsection{Sector Descriptions}\label{sec:sector_descriptions}
+
+Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+
+\begin{description}
+  \item[First First First] The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item. 
+  \item[Second] The second item The second item The second item The second item The second item The second item The second item The second item The second item
+  \item[Third] The third etc. The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.
+\end{description}
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
 \subsection{Evaluating [the] entries}\label{sec:evaluating_entries}
 
 Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
@@ -618,22 +631,13 @@ plot(rnorm(100))
 Lite text emellan.
 
 \begin{table}[height]
-\caption[Text that shows up in the table listing.]{Text describing this figure over the table. Text describing this figure over the table.}
+\caption[Text that shows up in the table listing.]{Text describing this figure over the table.}
 \label{tab:sb_table}
 \centering
 \begin{tabular}{ l | c || r }
   1 & 2 & 3 \\
   4 & 5 & 6 \\
   7 & 8 & 9 \\
-\end{tabular}
-\end{table}
-
-\begin{table}[height]
-\caption[Text that shows up in the table listing.]{Text describing this figure over the table. Text describing this figure over the table.}
-\label{tab:texttable}
-\centering
-\begin{tabular}{| l | }
- Text \\
 \end{tabular}
 \end{table}
 
@@ -668,35 +672,127 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 %\begin{appendices}
 \section{Appendix 1}
 
+%\ref{tab:longtable_example}
+
 \begin{longtable}{|c|c|c|c|}
-\caption{A simple longtable example}\\
+\caption{A simple longtable example} \label{tab:longtable_example}\\
 \hline
-\textbf{First entry} & \textbf{Second entry} & \textbf{Third entry} & \textbf{Fourth entry} \\
+\multicolumn{2}{|c|}{\textbf{Sector}} & \multicolumn{2}{|c|}{\textbf{Status}}\\
+\hline
+\textbf{Holding} & \textbf{Issuing} & \textbf{Exists} & \textbf{Sign.} \\
 \hline
 \endfirsthead
 \multicolumn{4}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
-\textbf{First entry} & \textbf{Second entry} & \textbf{Third entry} & \textbf{Fourth entry} \\
+\multicolumn{2}{|c|}{\textbf{Sector}} & \multicolumn{2}{|c|}{\textbf{Status}}\\
+\hline
+\textbf{Holding} & \textbf{Issuing} & \textbf{Exists} & \textbf{Sign.} \\
 \hline
 \endhead
 \hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
-\hline
+%\hline
 \endlastfoot
-\label{tab:longtable_example}
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
-1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \\
+%
+HH & HH & ? & ? \\ \hline
+HH & NFC & ? & ? \\ \hline
+HH & MFI & ? & ? \\ \hline
+HH & INS & ? & ? \\ \hline
+HH & OFI & ? & ? \\ \hline
+HH & CG & ? & ? \\ \hline
+HH & SP & ? & ? \\ \hline
+HH & CB & ? & ? \\ \hline
+HH & RoW & ? & ? \\ \hline
+\hline
+%
+NFC & HH & ? & ? \\ \hline
+NFC & NFC & ? & ? \\ \hline
+NFC & MFI & ? & ? \\ \hline
+NFC & INS & ? & ? \\ \hline
+NFC & OFI & ? & ? \\ \hline
+NFC & CG & ? & ? \\ \hline
+NFC & SP & ? & ? \\ \hline
+NFC & CB & ? & ? \\ \hline
+NFC & RoW & ? & ? \\ \hline
+\hline
+%
+MFI & HH & ? & ? \\ \hline
+MFI & NFC & ? & ? \\ \hline
+MFI & MFI & ? & ? \\ \hline
+MFI & INS & ? & ? \\ \hline
+MFI & OFI & ? & ? \\ \hline
+MFI & CG & ? & ? \\ \hline
+MFI & SP & ? & ? \\ \hline
+MFI & CB & ? & ? \\ \hline
+MFI & RoW & ? & ? \\ \hline
+\hline
+%
+INS & HH & ? & ? \\ \hline
+INS & NFC & ? & ? \\ \hline
+INS & MFI & ? & ? \\ \hline
+INS & INS & ? & ? \\ \hline
+INS & OFI & ? & ? \\ \hline
+INS & CG & ? & ? \\ \hline
+INS & SP & ? & ? \\ \hline
+INS & CB & ? & ? \\ \hline
+INS & RoW & ? & ? \\ \hline
+\hline
+%
+OFI & HH & ? & ? \\ \hline
+OFI & NFC & ? & ? \\ \hline
+OFI & MFI & ? & ? \\ \hline
+OFI & INS & ? & ? \\ \hline
+OFI & OFI & ? & ? \\ \hline
+OFI & CG & ? & ? \\ \hline
+OFI & SP & ? & ? \\ \hline
+OFI & CB & ? & ? \\ \hline
+OFI & RoW & ? & ? \\ \hline
+\hline
+%
+CG & HH & ? & ? \\ \hline
+CG & NFC & ? & ? \\ \hline
+CG & MFI & ? & ? \\ \hline
+CG & INS & ? & ? \\ \hline
+CG & OFI & ? & ? \\ \hline
+CG & CG & ? & ? \\ \hline
+CG & SP & ? & ? \\ \hline
+CG & CB & ? & ? \\ \hline
+CG & RoW & ? & ? \\ \hline
+\hline
+%
+SP & HH & ? & ? \\ \hline
+SP & NFC & ? & ? \\ \hline
+SP & MFI & ? & ? \\ \hline
+SP & INS & ? & ? \\ \hline
+SP & OFI & ? & ? \\ \hline
+SP & CG & ? & ? \\ \hline
+SP & SP & ? & ? \\ \hline
+SP & CB & ? & ? \\ \hline
+SP & RoW & ? & ? \\ \hline
+\hline
+%
+CB & HH & ? & ? \\ \hline
+CB & NFC & ? & ? \\ \hline
+CB & MFI & ? & ? \\ \hline
+CB & INS & ? & ? \\ \hline
+CB & OFI & ? & ? \\ \hline
+CB & CG & ? & ? \\ \hline
+CB & SP & ? & ? \\ \hline
+CB & CB & ? & ? \\ \hline
+CB & RoW & ? & ? \\ \hline
+\hline
+%
+RoW & HH & ? & ? \\ \hline
+RoW & NFC & ? & ? \\ \hline
+RoW & MFI & ? & ? \\ \hline
+RoW & INS & ? & ? \\ \hline
+RoW & OFI & ? & ? \\ \hline
+RoW & CG & ? & ? \\ \hline
+RoW & SP & ? & ? \\ \hline
+RoW & CB & ? & ? \\ \hline
+RoW & RoW & ? & ? \\ \hline
+%
 \end{longtable}
 
 \section{Appendix 2}
