@@ -628,6 +628,15 @@ Lite text emellan.
 \end{tabular}
 \end{table}
 
+\begin{table}[height]
+\caption[Text that shows up in the table listing.]{Text describing this figure over the table. Text describing this figure over the table.}
+\label{tab:texttable}
+\centering
+\begin{tabular}{| l | }
+ Text \\
+\end{tabular}
+\end{table}
+
 You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
 %</thesis|techdoc>
 
