@@ -60,6 +60,8 @@ Richard Sandberg\\
 \usepackage[flushleft]{threeparttable}
 %\usepackage{booktabs}
 
+\usepackage{appendix}
+
 % Commands
 
 % Set values for PDF-info.
@@ -623,6 +625,10 @@ Lite text emellan.
 You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
 %</thesis|techdoc>
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %<*thesis>
 \clearpage
 %\bibliography{ref}	
@@ -630,10 +636,25 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 \printbibliography	% Using biblatex
 %</thesis>
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendices                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %<*thesis>
 \clearpage
+\setcounter{page}{1}
+\renewcommand{\thepage}{A\arabic{page}}
+
 \appendix
-\section{Appendix}
+\appendixpage
+\noappendicestocpagenum
+\addappheadtotoc
+
+%\begin{appendices}
+\section{Appendix 1}
+\section{Appendix 2}
+%\end{appendices}
+
 %</thesis>
 
 %<*thesis|techdoc>
