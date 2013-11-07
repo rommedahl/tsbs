@@ -2,7 +2,7 @@
 
 setwd("~/Documents/Studier & Förkovran/Högskolestudier/Stockholm School of Economics/MSc in Economics/Kurser/5350 Thesis in Economics/workdir/")
 
-# Datainhämtning
+## Datainhämtning
 
 GetZ1Cat <- function(zipname) {
   # Downloads zip-file, and read data from the textfile to a list of dataframes
@@ -23,14 +23,28 @@ GetZ1Cat <- function(zipname) {
   # Vi tar ut en lista över filer för att sedan kunna extrahera dem
   filelist <- as.character(unzip(zipfile, list = TRUE)$Name)
 
+  # Vi behöver behandla zipfiler med problem.
+  filelist <- FixFileListZ1(filelist, zipname)
+
   # Vi sparar datan som tabeller i en lista som sedan kan hanteras.
   datalist <- lapply(filelist, function(i) {read.table(unz(zipfile, i), header=TRUE)})
-  names(datalist)
 
   # När vi namnger listorna så uppstår inte "structur" problemet vid cbind senare.
   # Med en textoperation så tar vi dessutom bort onödig filändelse.
   names(datalist) <- gsub("*.prn$", "", filelist)
   return(datalist)
+}
+
+GrepQZ1 <- function(filelist) {
+  grep("quarterly", filelist, value=TRUE)
+}
+
+FixFileListZ1 <- function(filelist,zipname) {
+  if (zipname=="stabs.zip") {
+    return(GrepQZ1(filelist))
+  } else {
+    return(filelist)
+  }
 }
 
 TsZ1Cat <- function(datalist) {
@@ -83,27 +97,40 @@ GetZ1 <- function() {
   #
   # Returns:
   # A list with time series objects
-  
+
   # Vector with all zip-files avaliable at FED
-  zipnames <- c("atabs.zip", "utabs.zip", "ltabs.zip", "btabs.zip", "gtabs.zip", "stabs.zip", "itabs.zip")
+  #zipnames <- c("atabs.zip", "utabs.zip", "ltabs.zip", "btabs.zip", "gtabs.zip", "stabs.zip", "itabs.zip")
   # Problematic files removed. Seems not to be important, and only anual data.
-  zipnames <- zipnames[!zipnames %in% c("stabs.zip", "itabs.zip")]
+  #zipnames <- zipnames[!zipnames %in% c("stabs.zip", "itabs.zip")]
 
   # Vi skickar sedan namnvektorn in i get.z1.cat via lapply, och erhåller då
   # en lista med TS-objekt med de olika categorierna.
-  z1list <- lapply(zipnames, function(i) Z1Cat(i))
+  z1list <- lapply(ZipNamesZ1(), function(i) Z1Cat(i))
   # Adding table names to the lists entries.
-  names(z1list) <- gsub("*.zip$", "", zipnames)
+  names(z1list) <- gsub("*.zip$", "", ZipNamesZ1())
   return(z1list)
 }
 
 SaveZ1 <- function() {
-  # Get a new Z1 list and saves it i the WD. 
+  # Get a new Z1 list and saves it i the WD.
   saveRDS(GetZ1(),FileNameZ1())
 }
 
+ZipNamesZ1 <- function() {
+  # Returns the defines name of local Z1-file
+
+  # Vector with all zip-files avaliable at FED
+  zipnames <- c("atabs.zip", "utabs.zip", "ltabs.zip", "btabs.zip", "gtabs.zip", "stabs.zip", "itabs.zip")
+  # Problematic files removed. Seems not to be important, and only anual data.
+  zipnames <- zipnames[!zipnames %in% c("itabs.zip")]
+
+  # Vi skickar sedan namnvektorn in i get.z1.cat via lapply, och erhåller då
+  # en lista med TS-objekt med de olika categorierna.
+  return(zipnames)
+}
+
 FileNameZ1 <- function() {
-  # Returns the defines name of local Z1-file 
+  # Returns the defines name of local Z1-file
   return("z1")
 }
 
@@ -183,7 +210,6 @@ SearchVectorZ1 <- function(searchvector) {
   return(paste(searchvector, collapse="|"))
 }
 
-
 VarNamesZ1 <- function(searchvector, data, value = TRUE) {
   # Search columnnames that matches any pattern in the search vector
   #
@@ -241,8 +267,6 @@ VarListZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
     return(lapply(tslist, function(i) VarZ1(searchvector,i, value)))
 }
 
-testVarListZ1 <- VarListZ1(sw)  # Test
-
 VarSelectionZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
   # Returns variables that matched the search term.
   #
@@ -254,6 +278,4 @@ VarSelectionZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
   # Returns:
   #   A list containing columns that matched the search pattern.
     return(CbindZ1Cat(VarListZ1(searchvector, tslist, value)))
-
 }
-
