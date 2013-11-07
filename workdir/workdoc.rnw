@@ -21,66 +21,82 @@
 %% Preamble                                                                   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Document settings
-\RequirePackage[l2tabu, orthodox]{nag}	% The nag package warns you for incorrect LaTeX usage
-\documentclass[12pt, a4paper, oneside]{article}	% option
-%\documentclass[12pt, article, a4paper, oneside]{memoir}	% option
-%\documentclass[11pt,article,oneside]{memoir}
+%%
+%% Packages to use
+%%
 
-\title{Cointegrating Relationships\\in a Balance Sheet Approach}
-%\subtitle{The subtitle}	%Not in standard class.
-\author{
-\emph{Author}\\
-Marcus Rommedahl\\
-\texttt{\small 40310@student.hhs.se}
-\and
-\emph{Supervisor}\\
-Richard Sandberg\\
-\texttt{\small rickard.sandberg@hhs.se}
-}
+\RequirePackage[l2tabu, orthodox]{nag}  % Warns you for incorrect LaTeX usage
+\documentclass[12pt, a4paper, oneside]{article}  % option
 
-% Packages to use
+%% Management
+\usepackage{easy-todo}  % Mark things to do later.
 
-%\usepackage{natbib}		% Adds additional styles to bibtex.
-\usepackage[citestyle=authoryear]{biblatex}	% Use instead of natbib
-\addbibresource{ref.bib}	% Use instead of natbib
-%\usepackage{showframe}	% Shows margins by asserting frames.
-\usepackage{mathtools}	% Loads amsmath aswell
-\usepackage{paralist}	% Inline lists
-%\usepackage[a4paper]{geometry}	%Makes less marings on the sides. Do not load if using memoir.
+%% Viev and format
+\usepackage{microtype}  % The microtype package improves the spacing between words and letters.  Load this package after fonts.
+%\usepackage{showframe}  % Shows margins by asserting frames.
+%\usepackage[a4paper]{geometry} %Makes less marings on the sides. Do not load if using memoir.
 
-\usepackage{easy-todo}	% Mark things to do later.
-
-\usepackage{microtype}	% The microtype package improves the spacing between words and letters.  Load this package after fonts.
-% Perhaps load todo notes
-
-\usepackage[breaklinks, colorlinks=false, linkbordercolor={0 0 1}]{hyperref}	%Ex­ten­sive sup­port for hy­per­text. Makes it possible to click internal links. Load after biblatex. It should be loaded at the end of the preamble.
-
-\usepackage{multirow}	% Make multiple rows in tables.
+%% Table packages
+\usepackage{multirow}  % Make multiple rows in tables.
 \usepackage[flushleft]{threeparttable}
+\usepackage{longtable}
 %\usepackage{booktabs}
 
+%% Math
+\usepackage{mathtools}  % Loads amsmath aswell
+
+%% Content management
+\usepackage{paralist}  % Inline lists
 \usepackage{appendix}
+\usepackage[acronym,nonumberlist]{glossaries}  % Load after hyperref. ?[xindy,toc]?
+\makeglossaries
 
-\usepackage{longtable}
+%% Bibliografy packages
+\usepackage[citestyle=authoryear]{biblatex}  % Use instead of natbib
+\addbibresource{ref.bib}  % Use instead of natbib
+%\usepackage{natbib}    % Adds additional styles to bibtex.
 
-% Commands
+%% Hyperreflinks
+\usepackage[breaklinks, colorlinks=false, linkbordercolor={0 0 1}]{hyperref}  %Ex­ten­sive sup­port for hy­per­text. Makes it possible to click internal links. Load after biblatex. It should be loaded at the end of the preamble.
 
-% Set values for PDF-info.
-\hypersetup
+%%
+%% Commands and definitions
+%%
+
+%% Glossary and Acronym defitions
+% http://tex.stackexchange.com/questions/8946/how-to-combine-acronym-and-glossary
+
+\renewcommand*{\acronymname}{List of Abbreviations}
+
+\renewcommand*{\glspostdescription}{}  % Removes dot in abr and gloss.
+
+\newglossaryentry{linux}
 {
-    pdfauthor={Marcus Rommedahl},
-    pdfsubject={Economics, Macroeconomics},
-    pdftitle={Cointegrating Relationships in a Balance Sheet Approach},
-    pdfkeywords={Economics, Macroeconomics, Time Series, Vector Error Correction Models}
+  name=Linux,  % Capital letter first, if it always has so.
+  description={is a generic term referring to the family of Unix-like
+               computer operating systems that use the Linux kernel},
+  plural=Linuces,  % Only needed if plural is only adding a s
+  %sort=Linux  % Only needed if name using special charachters
 }
 
-% Make margin notes font size tiny
+\newacronym[longplural=Frames per Second]{fpsLabel}{FPS}{Frame per Second} %
+
+
+%% Set values for PDF-info.
+\hypersetup
+{
+  pdfauthor={Marcus Rommedahl},
+  pdfsubject={Economics, Macroeconomics},
+  pdftitle={Cointegrating Relationships in a Balance Sheet Approach},
+  pdfkeywords={Economics, Macroeconomics, Time Series, Vector Error Correction Models}
+}
+
+%% Make margin notes font size tiny
 \let\oldmarginpar\marginpar
 \renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
 {\raggedright\tiny #1}}
 
-\setcounter{secnumdepth}{1}	% Set section numbering level
+\setcounter{secnumdepth}{1}  % Set section numbering level
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
@@ -89,13 +105,32 @@ Richard Sandberg\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+%%
+%% Document settings
+%%
+\title{Cointegrating Relationships\\in a Balance Sheet Approach}
+%\subtitle{The subtitle}  %Not in standard class.
+\author{
+  \emph{Author}\\
+  Marcus Rommedahl\\
+  \texttt{\small 40310@student.hhs.se}
+  \and
+  \emph{Supervisor}\\
+  Richard Sandberg\\
+  \texttt{\small rickard.sandberg@hhs.se}
+}
 
 \setcounter{page}{1}
 \pagenumbering{roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Title Page                                                                 %%
+%% Front matter                                                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Title page
+%%
+
 \begin{titlepage}
 \begin{center}
 
@@ -115,7 +150,7 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 
 \vfill
 
-\begin{flushleft} 
+\begin{flushleft}
 \small
 \emph{JEL Classification:} To, be, added\\[0.125cm]
 
@@ -124,21 +159,35 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 
 \end{center}
 \end{titlepage}
-%</thesis|techdoc>
 
-%<*thesis|techdoc>
+%%
+%% To do
+%%
+
 \clearpage
 \listoftodos
+
+%%
+%% Table of contents
+%%
+
+\clearpage
+\tableofcontents
+
+%%
+%% List of abbreviations, figures and tables.
+%%
+
+\clearpage
+\printglossary[type=\acronymtype]
+\listoffigures
+\listoftables
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
-\clearpage
-\tableofcontents
-\listoffigures
-\listoftables
-%</thesis|techdoc>	
-
-%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Introduction                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \setcounter{page}{1}
 \pagenumbering{arabic}
@@ -164,11 +213,14 @@ The topic of this thesis is to use a framework based on a balance sheet approach
 This is the outline of the thesis:
 In the \hyperref[sec:theory_previous_research]{second section} we present theories and previous research that is relevant for the thesis.
 In the \hyperref[sec:five_sector_economy]{fourth section} there is a more fundamental discussion about the classifications and the interlinkages that makes up the five sector model, and why we choose this kind of model.
-The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use. 
+The \hyperref[sec:empirical_strategy]{fifth section} describes the empirical strategy as what considerations that affected the choice of subject, as also the examination of which statistical models that are sufficient to use.
 In the \hyperref[sec:model_specification]{sixth section} we will formalize our model specifications from whom we estimates the results that is presented in the \hyperref[sec:estimation_results]{seventh section} and analyzed in the \hyperref[sec:analysis]{eighth section}.Our conclusions is then presented in the \hyperref[sec:conclusions]{ninth and final section} of the thesis.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Theory and previous research                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory \& Previous Research}\label{sec:theory_previous_research}%%%%%%%
 \hspace{0pt}\marginpar{Theory and previous research. Really not that much theory for this topic.}%
 
@@ -189,6 +241,9 @@ ECB \cite{ecb09}
 %</dump>
 
 %<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The Balance Sheet Approach                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}%%%%%%%%%%
 
 \hspace{0pt}\marginpar{Introduction to the balance sheet approach.}%
@@ -214,7 +269,7 @@ These assets are still interesting for the analysis as they might be used as col
 (iii) Expected flows such as households future income or governments future tax revenue.
 This as agents can be assumed to structure its present balance sheet on assumptions about future income.
 
-\subsection{Financial interlinkages}\label{sec:financial_interlinkages}
+\subsection{Financial interlinkages}\label{sec:financial_interlinkages}%%%%%%%%%
 
 \hspace{0pt}\marginpar{Defining the financial assets}%
 As financial positions is a contractual agreement between agents, we need to specify all the exposures between the sectors in the model.
@@ -224,42 +279,39 @@ where $i,j \in S$, and $S$ is a index set containing the $N$ sectors in our mode
 \marginpar{Change S to I, and describe it before this section?}%
 As this model will be used in a time series setting we will add the time index $t$.
 \begin{equation}
-	\label{exposure}%
-	x_{ij,t} : i,j \in S.% : |S|=N
+  \label{exposure}%
+  x_{ij,t} : i,j \in S.% : |S|=N
 \end{equation}
 All possible financial exposures can thus be represented as a $N \times N$ matrix, % $X_{t}$.
 %
 \begin{equation}
-	\label{exposure_matrix}
-	X_{t} =
-	\begin{bmatrix}
-		x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
-		\vdots & \ddots & \vdots &  & \vdots \\
-		x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
-		\vdots &  & \vdots & \ddots & \vdots \\	
-		x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
-	\end{bmatrix}.
+  \label{exposure_matrix}
+  X_{t} =
+  \begin{bmatrix}
+    x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
+    \vdots & \ddots & \vdots &  & \vdots \\
+    x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
+    \vdots &  & \vdots & \ddots & \vdots \\
+    x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
+  \end{bmatrix}.
 \end{equation}
 %
 \hspace{0pt}\marginpar{Properties to the financial assets matrix constitution.}%
 By construction there are some properties to this setting:
- \begin{inparaenum}[(i)]
-\item The diagonal when $x_{ij,t} : i=j$ represents a sectors contractual claims on itself.
-This could be argued for to be zero as a there are no reason for someone to own money to one self.
-But a sector includes heterogeneous agents and may thus take on financial agreements within the sector,
-e.g.\ may banks borrow from each other on different maturities.
-The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
-\item\label{p1_2} The summation of the row $i$, excluding the diagonal entries, corresponds to the financial assets $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
-\item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$;
-\item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$;
-and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the/a [financial] liability of someone else.
+\begin{inparaenum}[(i)]
+  \item The diagonal when $x_{ij,t} : i=j$ represents a sectors contractual claims on itself.
+  This could be argued for to be zero as a there are no reason for someone to own money to one self.
+  But a sector includes heterogeneous agents and may thus take on financial agreements within the sector, e.g.\ may banks borrow from each other on different maturities.
+  The magnitude of this inter-sectoral might also be dependent on other variables, so we chose not to by definition assign a zero value to the diagonal entries;
+  \item\label{p1_2} The summation of the row $i$, excluding the diagonal entries, corresponds to the financial assets $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is held by sector $i$ and is issued by the other sectors;
+  \item\label{p1_3} Analogously to \ref{p1_2}, columns corresponds to the claims $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ other sectors has on sector $j$;
+  \item from \ref{p1_2} and \ref{p1_3} we get  that the net worth of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$;
+  and \item, if looking only at only financial assets, the aggregated net worth must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, which corresponds to the fact that ones financial assets is the/a [financial] liability of someone else.
 \end{inparaenum}
 
 We will not use the matrix $X_{t}$ in any time series models itself, it is used as a representation of the time series entries that will be subject for the analysis and to sooner be estimated.
-%</thesis|techdoc>
 
-%<*thesis|techdoc>
-\subsection{[Discounted] Expected [future] [Financial] flows}\label{sec:expected_flows}%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{[Discounted] Expected [future] [Financial] flows}\label{sec:expected_flows}
 
 The financial flows we discuessed above are the result of contractual agreements.
 But flows as e.g.\ wages, sales and tax revenue are not generally reliant on a contract, but is a present state of transactions.
@@ -270,77 +322,77 @@ Thus $e_{ij}$ will be a asset in the balance sheet for the recieving part $i$, a
 \marginpar{Change S to I, and describe it before this section?}%
 As this model will be used in a time series setting we will add the time index $t$.
 Formally it will be defined as
+%% Discountfunction
 \begin{equation}
-	\label{exposure}%
-	e_{ij,t} = \sum_{t'=t}^{\infty} \left( \prod_{t''=t}^{t'} E_{t}(\beta_{t''}) \right) E_{t}(e_{ij,t''}): i,j \in S.% : |S|=N
+  \label{exposure}%
+  e_{ij,t} = \sum_{t'=t}^{\infty} \left( \prod_{t''=t}^{t'} E_{t}(\beta_{t''}) \right) E_{t}(e_{ij,t''}): i,j \in S.% : |S|=N
 \end{equation}
 %
 (or ?)
-%
+%% Discountfunction
 \begin{equation}
-	\label{exposure}%
-	e_{ij,t} = \sum_{t'=0}^{\infty} \left( \prod_{t''=0}^{t'} E_{t}(\beta_{t+t''}) \right) E_{t}(e_{ij,t+t''}): i,j \in S.% : |S|=N
+  \label{exposure}%
+  e_{ij,t} = \sum_{t'=0}^{\infty} \left( \prod_{t''=0}^{t'} E_{t}(\beta_{t+t''}) \right) E_{t}(e_{ij,t+t''}): i,j \in S.% : |S|=N
 \end{equation}
 %
 Out of all possible flows between the agents
 The discounted flows between all the agents can be represented as a $N \times N$ matrix, % $X_{t}$.
 %
 \todo{change from X to, what? E already used above}
-	\label{exposure_matrix}
+  \label{exposure_matrix}
 \begin{equation}
-	X_{t} =
-	\begin{bmatrix}
-		x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
-		\vdots & \ddots & \vdots &  & \vdots \\
-		x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
-		\vdots &  & \vdots & \ddots & \vdots \\	
-		x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
-	\end{bmatrix}.
+  X_{t} =
+  \begin{bmatrix}
+    x_{11,t} & \cdots & x_{1j,t} & \cdots & x_{1N,t} \\
+    \vdots & \ddots & \vdots &  & \vdots \\
+    x_{i1,t} & \cdots & x_{ij,t} & \cdots & x_{iN,t} \\
+    \vdots &  & \vdots & \ddots & \vdots \\
+    x_{N1,t} & \cdots & x_{Nj,t} & \cdots &x_{NN,t}
+  \end{bmatrix}.
 \end{equation}
 %
 \hspace{0pt}\marginpar{Properties to the financial flows matrix constitution.}%
 Those flows has properties analogously to the financial interlinkages in the previous section.
 \begin{inparaenum}[(i)]
-\item The diagonal $x_{ij,t} : i=j$ represents the flows within the sector.
-Firms will do transactions with other firms;
-\item\label{p2_2} The summation of the row $i$, excluding the diagonal entries, corresponds to the financial flows $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is recieved by sector $i$ from the other sectors;
-\item\label{p2_3} Analogously to \ref{p2_2}, columns corresponds to the flows $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ from sector $j$ to the other sectors;
-\item from \ref{p2_2} and \ref{p2_3} we get that the net flow of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$;
-and \item, if looking only at only financial assets, the aggregated net flows must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, as one sectors financial outflow, is the inflow of another sector.
+  \item The diagonal $x_{ij,t} : i=j$ represents the flows within the sector.
+  Firms will do transactions with other firms;
+  \item\label{p2_2} The summation of the row $i$, excluding the diagonal entries, corresponds to the financial flows $a_{i,t} = \sum_{j \in S \setminus i} x_{ij,t}$ that is recieved by sector $i$ from the other sectors;
+  \item\label{p2_3} Analogously to \ref{p2_2}, columns corresponds to the flows $l_{j,t} = \sum_{i \in S \setminus j} x_{ij,t}$ from sector $j$ to the other sectors;
+  \item from \ref{p2_2} and \ref{p2_3} we get that the net flow of sector $i$ in financial terms is $n_{i,t} = a_{i,t} - l_{j=i,t}$;
+  and \item, if looking only at only financial assets, the aggregated net flows must sum to zero, $\sum_{i \in S} n_{i,t} = 0$, as one sectors financial outflow, is the inflow of another sector.
 \end{inparaenum}
 
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
 \subsection{Real/Tangible property/assets}\label{sec:tangible_property}%%%%%%%%%
-%
+
 \hspace{0pt}\marginpar{What about RoW tangible property? Perhaps disc. in later section.}%
 Tangible property is owned and has a value merely out of its existence.
 We define the value of the property $p_{i}$, where $i$ is the the owning sector.
 In the time series setting we thus get
 %
 \begin{equation}
-	\label{exposure}%
-	p_{i,t} : i \in S,% : |S|=N
-\end{equation} 
+  \label{exposure}%
+  p_{i,t} : i \in S,% : |S|=N
+\end{equation}
 %
 that we can represent as the vector
 %
 \begin{equation}
-	\label{property_vector}%
-	p_{t} =
-	\begin{bmatrix}
-		p_{1,t}\\
-		\vdots\\
-		p_{i,t}\\
-		\vdots\\	
-		p_{N,t}
-	\end{bmatrix}.
+  \label{property_vector}%
+  p_{t} =
+  \begin{bmatrix}
+    p_{1,t}\\
+    \vdots\\
+    p_{i,t}\\
+    \vdots\\
+    p_{N,t}
+  \end{bmatrix}.
 \end{equation}
 %</thesis|techdoc>
 
-
 %<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Emperical strategy                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Empirical strategy}\label{sec:empirical_strategy}%%%%%%%%%%%%%%%%%%%%%%
 
 The aim of this section is to evaluation the options we have when defining or model, so that we later will get get a good and accurate estimation.
@@ -361,7 +413,7 @@ But as the number of sectors is increased, the entries in the matrix grows with 
 As an illustration we can assume a simple simple time series model with $s$ sectors and $n$ lags.
 If we would keep all entries in the $[X]$ and $[F]$ matrices and the vector $p_{t}$, we would end up with $(2s^2+s)n$ estimators.
 Table~\ref{tab:tradeoff_table} shows how fast the number of estimators increases with the numbers of sectors and lags.
-Anoter aspect to consider is data availability, that we can find data for the sectors to use with our model. 
+Anoter aspect to consider is data availability, that we can find data for the sectors to use with our model.
 
 \cite{ecb09} defines seven sectors: households, non-financial corporations, banks, insurance and pension fund companies, other financial intermediaries, general government, and the rest of the world.
 But we are also interested in how the central bank and the social security and pension funds, all sub-sectors to the general government sector in \cite{ecb09}.
@@ -373,170 +425,170 @@ Therefore we do also have two fallback options presented in table~\ref{tab:secto
 The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}
 %
 \begin{table}
-\centering
-\begin{threeparttable}
-\caption{Different levels of sector division}
-\label{tab:sector_division}
-\centering
-\begin{tabular}{| c || c | c | c | c | c | c |}
-\cline{2-7}
-\multicolumn{1}{r||}{} & \multicolumn{6}{|c|}{Level} \\ \cline{2-7}
-\multicolumn{1}{r||}{} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
-\multirow{6}{*}{Sector} & \multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Global\\ \footnotesize Economy\end{tabular}} &
-\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}
-&	21	&	36	&	55	&	78	\\	\cline{3-7}
-&	&
-\multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Subject\\ \footnotesize Economy\end{tabular}}	&	42	&	72	&	110	&	156	\\	\cline{4-7}
-&	&	&	63	&	108	&	165	&	234	\\	\cline{4-7}
-&	&	&	84	&	144	&	220	&	312	\\	\cline{4-7}
-&	&	&	105	&	180	&	275	&	390	\\	\cline{4-7}
-&	&	&	126	&	216	&	330	&	468	\\	\hline
-\end{tabular}
-\begin{tablenotes}
-\scriptsize
-\item Different levels of sector division.
-\end{tablenotes}
-\end{threeparttable}
+  \centering
+  \begin{threeparttable}
+    \caption{Different levels of sector division}
+    \label{tab:sector_division}
+    \centering
+    \begin{tabular}{| c || c | c | c | c | c | c |}
+      \cline{2-7}
+      \multicolumn{1}{r||}{} & \multicolumn{6}{|c|}{Level} \\ \cline{2-7}
+      \multicolumn{1}{r||}{} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+      \multirow{6}{*}{Sector} & \multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Global\\ \footnotesize Economy\end{tabular}} &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}
+      &  21  &  36  &  55  &  78  \\  \cline{3-7}
+      &  &
+      \multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Subject\\ \footnotesize Economy\end{tabular}}  &  42  &  72  &  110  &  156  \\  \cline{4-7}
+      &  &  &  63  &  108  &  165  &  234  \\  \cline{4-7}
+      &  &  &  84  &  144  &  220  &  312  \\  \cline{4-7}
+      &  &  &  105  &  180  &  275  &  390  \\  \cline{4-7}
+      &  &  &  126  &  216  &  330  &  468  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item Different levels of sector division.
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 \begin{table}
-\centering
-\begin{threeparttable}
-\caption{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
-\label{tab:tradeoff_table}
-\centering
-\begin{tabular}{| c | c || c | c | c | c | c | c |}
-\cline{3-8}
-\multicolumn{1}{r}{} & & \multicolumn{6}{|c|}{Sectors} \\ \cline{3-8}
-\multicolumn{1}{r}{} & & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
-\multirow{6}{*}{Lags} &
-0	&	3	&	10	&	21	&	36	&	55	&	78	\\	\cline{2-8}
-&
-1	&	6	&	20	&	42	&	72	&	110	&	156	\\	\cline{2-8}
-&
-2	&	9	&	30	&	63	&	108	&	165	&	234	\\	\cline{2-8}
-&
-3	&	12	&	40	&	84	&	144	&	220	&	312	\\	\cline{2-8}
-&
-4	&	15	&	50	&	105	&	180	&	275	&	390	\\	\cline{2-8}
-&
-5	&	18	&	60	&	126	&	216	&	330	&	468	\\	\hline
-\end{tabular}
-\begin{tablenotes}
-\scriptsize
-\item The numbers show how many estimations to be made if we allow for all possible financial claims and flows in between the sectors. As we can see, this numbers grows fast as we add sectors and lags.
-\end{tablenotes}
-\end{threeparttable}
+  \centering
+  \begin{threeparttable}
+    \caption{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
+    \label{tab:tradeoff_table}
+    \centering
+    \begin{tabular}{| c | c || c | c | c | c | c | c |}
+      \cline{3-8}
+      \multicolumn{1}{r}{} & & \multicolumn{6}{|c|}{Sectors} \\ \cline{3-8}
+      \multicolumn{1}{r}{} & & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+      \multirow{6}{*}{Lags} &
+      0  &  3  &  10  &  21  &  36  &  55  &  78  \\  \cline{2-8}
+      &
+      1  &  6  &  20  &  42  &  72  &  110  &  156  \\  \cline{2-8}
+      &
+      2  &  9  &  30  &  63  &  108  &  165  &  234  \\  \cline{2-8}
+      &
+      3  &  12  &  40  &  84  &  144  &  220  &  312  \\  \cline{2-8}
+      &
+      4  &  15  &  50  &  105  &  180  &  275  &  390  \\  \cline{2-8}
+      &
+      5  &  18  &  60  &  126  &  216  &  330  &  468  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item The numbers show how many estimations to be made if we allow for all possible financial claims and flows in between the sectors. As we can see, this numbers grows fast as we add sectors and lags.
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 \begin{table}
-\centering
-\begin{threeparttable}
-\caption{Options for the set of Sectors}
-\label{tab:sector_options}
-\centering
-\begin{tabular}{| c || c | c | c |}
-\cline{2-4}
-\multicolumn{1}{r||}{} & \multicolumn{3}{|c|}{Options} \\ \cline{2-4}
-\multicolumn{1}{r||}{} & Preferred & Fallback 1 & Fallback 2 \\ \hline \hline
-\multirow{12}{*}{Sectors} &
-\footnotesize Households	&	Households	&	Households	\\	\cline{2-4}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}	\\	\cline{2-4}
-&
-Banks	&	Banks	&	\multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Financial \\ \footnotesize Corporations \end{tabular}}	\\	\cline{2-3}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Insurance and \\ \footnotesize pension fund \\ companies\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Insurance and \\ \footnotesize pension fund \\ companies\end{tabular}	&	\\	\cline{2-3}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Other Financial\\ \footnotesize Intermediaries\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Other Financial\\ \footnotesize Intermediaries\end{tabular}	&	\\	\cline{2-4}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Central\\ \footnotesize Government\end{tabular}	&	\multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize General\\ \footnotesize Government\end{tabular}}	&	\multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize General\\ \footnotesize Government\end{tabular}}	\\	\cline{2-2}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Social security \\ \footnotesize Pension system \end{tabular}	&	&	\\	\cline{2-2}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Central\\ \footnotesize Bank \end{tabular}	&	&	\\	\cline{2-4}
-&
-\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}	&	\begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}	\\	\hline \hline
-No	&	9	&	7	&	5	\\	\hline
-\end{tabular}
-\begin{tablenotes}
-\scriptsize
-\item Table notes
-\end{tablenotes}
-\end{threeparttable}
+  \centering
+  \begin{threeparttable}
+    \caption{Options for the set of Sectors}
+    \label{tab:sector_options}
+    \centering
+    \begin{tabular}{| c || c | c | c |}
+      \cline{2-4}
+      \multicolumn{1}{r||}{} & \multicolumn{3}{|c|}{Options} \\ \cline{2-4}
+      \multicolumn{1}{r||}{} & Preferred & Fallback 1 & Fallback 2 \\ \hline \hline
+      \multirow{12}{*}{Sectors} &
+      \footnotesize Households  &  Households  &  Households  \\  \cline{2-4}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}  &  \begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}  &  \begin{tabular}[x]{@{}c@{}} \footnotesize Non-Financial\\ \footnotesize Corporations\end{tabular}  \\  \cline{2-4}
+      &
+      Banks  &  Banks  &  \multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Financial \\ \footnotesize Corporations \end{tabular}}  \\  \cline{2-3}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Insurance and \\ \footnotesize pension fund \\ companies\end{tabular}  &  \begin{tabular}[x]{@{}c@{}} \footnotesize Insurance and \\ \footnotesize pension fund \\ companies\end{tabular}  &  \\  \cline{2-3}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Other Financial\\ \footnotesize Intermediaries\end{tabular}  &  \begin{tabular}[x]{@{}c@{}} \footnotesize Other Financial\\ \footnotesize Intermediaries\end{tabular}  &  \\  \cline{2-4}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Central\\ \footnotesize Government\end{tabular}  &  \multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize General\\ \footnotesize Government\end{tabular}}  &  \multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize General\\ \footnotesize Government\end{tabular}}  \\  \cline{2-2}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Social security \\ \footnotesize Pension system \end{tabular}  &  &  \\  \cline{2-2}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Central\\ \footnotesize Bank \end{tabular}  &  &  \\  \cline{2-4}
+      &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}  &  \begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}  &  \begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}  \\  \hline \hline
+      No  &  9  &  7  &  5  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item Table notes
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 \begin{table}\footnotesize
-\centering
-\begin{threeparttable}
-\caption{Examination of Financial Interlinkages}
-\label{tab:examination_financial_interlinkages}
-\centering
-\begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
-\cline{3-11}
-\multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Issuing Part} \\ \cline{3-11}
-\multicolumn{2}{r||}{} &	\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
-\multirow{10}{*}{\rotatebox{90}{Holding Part}} & \footnotesize HH	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize NFC	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize MFI	&	?	&	?	&	$\bullet$	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize INS	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize OFI	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize CG	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize SP	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize CB	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize RoW	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\hline
-\end{tabular}
-\begin{tablenotes}
-\scriptsize
-\item A dot is representing there is a significant amount of financial interlinkage between the the holding and issuing parts. 
-\end{tablenotes}
-\end{threeparttable}
+  \centering
+  \begin{threeparttable}
+    \caption{Examination of Financial Interlinkages}
+    \label{tab:examination_financial_interlinkages}
+    \centering
+    \begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
+      \cline{3-11}
+      \multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Issuing Part} \\ \cline{3-11}
+      \multicolumn{2}{r||}{} &  \rotatebox{90}{\footnotesize HH} &  \rotatebox{90}{\footnotesize NFC}  &  \rotatebox{90}{\footnotesize MFI}  &  \rotatebox{90}{\footnotesize INS}  &  \rotatebox{90}{\footnotesize OFI}  &  \rotatebox{90}{\footnotesize CG}  &  \rotatebox{90}{\footnotesize SP}  &  \rotatebox{90}{\footnotesize CB}  &  \rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
+      \multirow{10}{*}{\rotatebox{90}{Holding Part}} & \footnotesize HH  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize NFC  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize MFI  &  ?  &  ?  &  $\bullet$  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize INS  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize OFI  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize CG  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize SP  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize CB  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize RoW  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item A dot is representing there is a significant amount of financial interlinkage between the the holding and issuing parts.
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 \begin{table}\footnotesize
-\centering
-\begin{threeparttable}
-\caption{Examination of Financial Flows}
-\label{tab:examination_financial_flows}
-\centering
-\begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
-\cline{3-11}
-\multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Paying Part} \\ \cline{3-11}
-\multicolumn{2}{r||}{} &	\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
-\multirow{10}{*}{\rotatebox{90}{Receiving Part}} & \footnotesize HH	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize NFC	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize MFI	&	?	&	?	&	$\bullet$	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize INS	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize OFI	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize CG	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize SP	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize CB	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\cline{2-11}
-& \footnotesize RoW	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\hline
-\end{tabular}
-\begin{tablenotes}
-\scriptsize
-\item A dot is representing there is a significant amount of financial flows between the the receiving and paying parts. 
-\end{tablenotes}
-\end{threeparttable}
+  \centering
+  \begin{threeparttable}
+    \caption{Examination of Financial Flows}
+    \label{tab:examination_financial_flows}
+    \centering
+    \begin{tabular}{| c | c || c | c | c | c | c | c | c | c | c |}
+      \cline{3-11}
+      \multicolumn{2}{r||}{} & \multicolumn{9}{c|}{Paying Part} \\ \cline{3-11}
+      \multicolumn{2}{r||}{} &  \rotatebox{90}{\footnotesize HH} &  \rotatebox{90}{\footnotesize NFC}  &  \rotatebox{90}{\footnotesize MFI}  &  \rotatebox{90}{\footnotesize INS}  &  \rotatebox{90}{\footnotesize OFI}  &  \rotatebox{90}{\footnotesize CG}  &  \rotatebox{90}{\footnotesize SP}  &  \rotatebox{90}{\footnotesize CB}  &  \rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
+      \multirow{10}{*}{\rotatebox{90}{Receiving Part}} & \footnotesize HH  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize NFC  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize MFI  &  ?  &  ?  &  $\bullet$  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize INS  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize OFI  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize CG  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize SP  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize CB  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \cline{2-11}
+      & \footnotesize RoW  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item A dot is representing there is a significant amount of financial flows between the the receiving and paying parts.
+  \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 \begin{table}\footnotesize
-\centering
-\begin{threeparttable}
-\caption{Examination of Tangible Assets}
-\label{tab:examination_tangible assets}
-\centering
-\begin{tabular}{| c | c | c | c | c | c | c | c | c |}
-\hline
-\multicolumn{9}{|c|}{Owning Sector} \\ \hline
-\rotatebox{90}{\footnotesize HH} &	\rotatebox{90}{\footnotesize NFC}	&	\rotatebox{90}{\footnotesize MFI}	&	\rotatebox{90}{\footnotesize INS}	&	\rotatebox{90}{\footnotesize OFI}	&	\rotatebox{90}{\footnotesize CG}	&	\rotatebox{90}{\footnotesize SP}	&	\rotatebox{90}{\footnotesize CB}	&	\rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
-?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	&	?	\\	\hline
-\end{tabular}
-\begin{tablenotes}
-\scriptsize
-\item A dot is representing there is a significant ownership of tangible assets. 
-\end{tablenotes}
-\end{threeparttable}
+  \centering
+  \begin{threeparttable}
+    \caption{Examination of Tangible Assets}
+    \label{tab:examination_tangible assets}
+    \centering
+    \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+      \hline
+      \multicolumn{9}{|c|}{Owning Sector} \\ \hline
+      \rotatebox{90}{\footnotesize HH} &  \rotatebox{90}{\footnotesize NFC}  &  \rotatebox{90}{\footnotesize MFI}  &  \rotatebox{90}{\footnotesize INS}  &  \rotatebox{90}{\footnotesize OFI}  &  \rotatebox{90}{\footnotesize CG}  &  \rotatebox{90}{\footnotesize SP}  &  \rotatebox{90}{\footnotesize CB}  &  \rotatebox{90}{\footnotesize RoW}  \\ \hline \hline
+      ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  &  ?  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item A dot is representing there is a significant ownership of tangible assets.
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 %Dynamics. The effect of prices. Flows. Assumptions.
@@ -544,13 +596,13 @@ No	&	9	&	7	&	5	\\	\hline
 %The first thing we will do in the empirical strategy is to define a proto-model such that we can chose what variables to evaluate.
 %From the variables in the proto-model we will also choose or subject of analysis, as availability of data is a crucial aspect.
 %First, all the variables need to have a sample rate that meets a minimal requirement, as the data has to be downsampled to the sample rate of the variable with the lowest sample rate.
-%Also, the data series needs to bee long enough to later get a good model estimation. 
+%Also, the data series needs to bee long enough to later get a good model estimation.
 %
 %
 %As the choice of time series model is very dependent on the properties of the variables the evaluation process is very crucial.
 
 %In short.
-%Test variables for integrated/stationarity for decision on what model to use. 
+%Test variables for integrated/stationarity for decision on what model to use.
 
 %Dependent on data avaliability.
 %US/EU/OECD-country?
@@ -559,30 +611,26 @@ No	&	9	&	7	&	5	\\	\hline
 
 %Variable examination.
 
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
-\subsection{Sector Descriptions}\label{sec:sector_descriptions}
+\subsection{Sector Descriptions}\label{sec:sector_descriptions}%%%%%%%%%%%%%%%%%
 
 Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
 
 \begin{description}
-  \item[First First First] The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item. 
+  \item[First] The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.
   \item[Second] The second item The second item The second item The second item The second item The second item The second item The second item The second item
   \item[Third] The third etc. The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.
 \end{description}
 
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
-\subsection{Evaluating [the] entries}\label{sec:evaluating_entries}
+\subsection{Evaluating [the] entries}\label{sec:evaluating_entries}%%%%%%%%%%%%%
 
 Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
 %</thesis|techdoc>
 
-
 %<*thesis|techdoc>
-\section{Data evaluation \& Model specification}\label{sec:model_specification}%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Data evaluation and Model specification                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data evaluation \& Model specification}\label{sec:model_specification}%
 
 Why a VAR/VECM-type of model.
 
@@ -593,20 +641,31 @@ Why different alternations/specifications of the model.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Estimation results                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Estimation results}\label{sec:estimation_results}%%%%%%%%%%%%%%%%%%%%%%
+
+We will love some estimationresults.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Analysis                                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis}\label{sec:analysis}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+And we sure will like the analysis.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Conclusions                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}\label{sec:conclusions}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%</thesis|techdoc>
 
-%<*techdoc>
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-%</techdoc>
+But it is in the conclusions the magic happends.
+%</thesis|techdoc>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sandbox                                                                    %%
@@ -616,9 +675,8 @@ Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cu
 %\clearpage
 \section{Sandbox}\label{sec:sandbox}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}%
-Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
 
-Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
+Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
 
 \begin{figure}[h]
 <<foo, eval=TRUE, echo=FALSE, results='asis', fig.height=4>>=
@@ -627,6 +685,28 @@ plot(rnorm(100))
 \caption[Text that shows up in the figure listing.]{Text describing this figure under the figure.}
 \label{fig:sb_figure}
 \end{figure}
+
+\gls{linux} \linebreak % Första användningen.
+\gls{linux} \linebreak% Andra användningen.
+\glspl{linux} \linebreak% Plural?
+\Gls{linux} \linebreak% Andra användningen.
+\Glspl{linux} \linebreak% Plural?
+%
+Lite text emellan.
+%
+\acrshort{fpsLabel} \linebreak
+
+%\acr{fpsLabel} % Borde finnas som kommando?
+
+\gls{fpsLabel}
+% Första användningen.
+\gls{fpsLabel} \linebreak% Andra användningen.
+\glspl{fpsLabel} \linebreak% Plural?
+\Gls{fpsLabel} \linebreak% Andra användningen.
+\Glspl{fpsLabel} \linebreak% Plural?
+\acrlong{fpsLabel} \linebreak
+\acrlongpl{fpsLabel} \linebreak
+\acrshort{fpsLabel} \linebreak
 
 Lite text emellan.
 
@@ -644,247 +724,271 @@ Lite text emellan.
 You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
 %</thesis|techdoc>
 
+%<*thesis>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography                                                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%<*thesis>
 \clearpage
-%\bibliography{ref}	
-%\bibliographystyle{plainnat}
-\printbibliography	% Using biblatex
+\printbibliography  % Using biblatex
+%\bibliography{ref}  % Using bibtex
+%\bibliographystyle{plainnat}  % Using bibtex
 %</thesis>
 
+%<*thesis>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Appendices                                                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%<*thesis>
 \clearpage
 \setcounter{page}{1}
 \renewcommand{\thepage}{A\arabic{page}}
-
 \appendix
 \appendixpage
 \noappendicestocpagenum
 \addappheadtotoc
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix 1                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\begin{appendices}
 \section{Appendix 1}
 
-%\ref{tab:longtable_example}
-
 \begin{longtable}{|c|c|c|c|}
-\caption{A simple longtable example} \label{tab:longtable_example}\\
-\hline
-\multicolumn{2}{|c|}{\textbf{Sector}} & \multicolumn{2}{|c|}{\textbf{Status}}\\
-\hline
-\textbf{Holding} & \textbf{Issuing} & \textbf{Exists} & \textbf{Sign.} \\
-\hline
-\endfirsthead
-\multicolumn{4}{c}%
-{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
-\hline
-\multicolumn{2}{|c|}{\textbf{Sector}} & \multicolumn{2}{|c|}{\textbf{Status}}\\
-\hline
-\textbf{Holding} & \textbf{Issuing} & \textbf{Exists} & \textbf{Sign.} \\
-\hline
-\endhead
-\hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
-\endfoot
-%\hline
-\endlastfoot
-%
-HH & HH & ? & ? \\ \hline
-HH & NFC & ? & ? \\ \hline
-HH & MFI & ? & ? \\ \hline
-HH & INS & ? & ? \\ \hline
-HH & OFI & ? & ? \\ \hline
-HH & CG & ? & ? \\ \hline
-HH & SP & ? & ? \\ \hline
-HH & CB & ? & ? \\ \hline
-HH & RoW & ? & ? \\ \hline
-\hline
-%
-NFC & HH & ? & ? \\ \hline
-NFC & NFC & ? & ? \\ \hline
-NFC & MFI & ? & ? \\ \hline
-NFC & INS & ? & ? \\ \hline
-NFC & OFI & ? & ? \\ \hline
-NFC & CG & ? & ? \\ \hline
-NFC & SP & ? & ? \\ \hline
-NFC & CB & ? & ? \\ \hline
-NFC & RoW & ? & ? \\ \hline
-\hline
-%
-MFI & HH & ? & ? \\ \hline
-MFI & NFC & ? & ? \\ \hline
-MFI & MFI & ? & ? \\ \hline
-MFI & INS & ? & ? \\ \hline
-MFI & OFI & ? & ? \\ \hline
-MFI & CG & ? & ? \\ \hline
-MFI & SP & ? & ? \\ \hline
-MFI & CB & ? & ? \\ \hline
-MFI & RoW & ? & ? \\ \hline
-\hline
-%
-INS & HH & ? & ? \\ \hline
-INS & NFC & ? & ? \\ \hline
-INS & MFI & ? & ? \\ \hline
-INS & INS & ? & ? \\ \hline
-INS & OFI & ? & ? \\ \hline
-INS & CG & ? & ? \\ \hline
-INS & SP & ? & ? \\ \hline
-INS & CB & ? & ? \\ \hline
-INS & RoW & ? & ? \\ \hline
-\hline
-%
-OFI & HH & ? & ? \\ \hline
-OFI & NFC & ? & ? \\ \hline
-OFI & MFI & ? & ? \\ \hline
-OFI & INS & ? & ? \\ \hline
-OFI & OFI & ? & ? \\ \hline
-OFI & CG & ? & ? \\ \hline
-OFI & SP & ? & ? \\ \hline
-OFI & CB & ? & ? \\ \hline
-OFI & RoW & ? & ? \\ \hline
-\hline
-%
-CG & HH & ? & ? \\ \hline
-CG & NFC & ? & ? \\ \hline
-CG & MFI & ? & ? \\ \hline
-CG & INS & ? & ? \\ \hline
-CG & OFI & ? & ? \\ \hline
-CG & CG & ? & ? \\ \hline
-CG & SP & ? & ? \\ \hline
-CG & CB & ? & ? \\ \hline
-CG & RoW & ? & ? \\ \hline
-\hline
-%
-SP & HH & ? & ? \\ \hline
-SP & NFC & ? & ? \\ \hline
-SP & MFI & ? & ? \\ \hline
-SP & INS & ? & ? \\ \hline
-SP & OFI & ? & ? \\ \hline
-SP & CG & ? & ? \\ \hline
-SP & SP & ? & ? \\ \hline
-SP & CB & ? & ? \\ \hline
-SP & RoW & ? & ? \\ \hline
-\hline
-%
-CB & HH & ? & ? \\ \hline
-CB & NFC & ? & ? \\ \hline
-CB & MFI & ? & ? \\ \hline
-CB & INS & ? & ? \\ \hline
-CB & OFI & ? & ? \\ \hline
-CB & CG & ? & ? \\ \hline
-CB & SP & ? & ? \\ \hline
-CB & CB & ? & ? \\ \hline
-CB & RoW & ? & ? \\ \hline
-\hline
-%
-RoW & HH & ? & ? \\ \hline
-RoW & NFC & ? & ? \\ \hline
-RoW & MFI & ? & ? \\ \hline
-RoW & INS & ? & ? \\ \hline
-RoW & OFI & ? & ? \\ \hline
-RoW & CG & ? & ? \\ \hline
-RoW & SP & ? & ? \\ \hline
-RoW & CB & ? & ? \\ \hline
-RoW & RoW & ? & ? \\ \hline
-%
+  \caption{A simple longtable example} \label{tab:longtable_example}\\
+    %% First Head
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Sector}} & \multicolumn{2}{|c|}{\textbf{Status}}\\
+    \hline
+    \textbf{Holding} & \textbf{Issuing} & \textbf{Exists} & \textbf{Sign.} \\
+    \hline
+  \endfirsthead
+    %% Head
+    \multicolumn{4}{c}%
+    {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Sector}} & \multicolumn{2}{|c|}{\textbf{Status}}\\
+    \hline
+    \textbf{Holding} & \textbf{Issuing} & \textbf{Exists} & \textbf{Sign.} \\
+    \hline
+  \endhead
+    %% Foot
+    \hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
+  \endfoot
+    %% Last Foot
+    %\hline
+  \endlastfoot
+  %
+  HH & HH & ? & ? \\ \hline
+  HH & NFC & ? & ? \\ \hline
+  HH & MFI & ? & ? \\ \hline
+  HH & INS & ? & ? \\ \hline
+  HH & OFI & ? & ? \\ \hline
+  HH & CG & ? & ? \\ \hline
+  HH & SP & ? & ? \\ \hline
+  HH & CB & ? & ? \\ \hline
+  HH & RoW & ? & ? \\ \hline
+  \hline
+  %
+  NFC & HH & ? & ? \\ \hline
+  NFC & NFC & ? & ? \\ \hline
+  NFC & MFI & ? & ? \\ \hline
+  NFC & INS & ? & ? \\ \hline
+  NFC & OFI & ? & ? \\ \hline
+  NFC & CG & ? & ? \\ \hline
+  NFC & SP & ? & ? \\ \hline
+  NFC & CB & ? & ? \\ \hline
+  NFC & RoW & ? & ? \\ \hline
+  \hline
+  %
+  MFI & HH & ? & ? \\ \hline
+  MFI & NFC & ? & ? \\ \hline
+  MFI & MFI & ? & ? \\ \hline
+  MFI & INS & ? & ? \\ \hline
+  MFI & OFI & ? & ? \\ \hline
+  MFI & CG & ? & ? \\ \hline
+  MFI & SP & ? & ? \\ \hline
+  MFI & CB & ? & ? \\ \hline
+  MFI & RoW & ? & ? \\ \hline
+  \hline
+  %
+  INS & HH & ? & ? \\ \hline
+  INS & NFC & ? & ? \\ \hline
+  INS & MFI & ? & ? \\ \hline
+  INS & INS & ? & ? \\ \hline
+  INS & OFI & ? & ? \\ \hline
+  INS & CG & ? & ? \\ \hline
+  INS & SP & ? & ? \\ \hline
+  INS & CB & ? & ? \\ \hline
+  INS & RoW & ? & ? \\ \hline
+  \hline
+  %
+  OFI & HH & ? & ? \\ \hline
+  OFI & NFC & ? & ? \\ \hline
+  OFI & MFI & ? & ? \\ \hline
+  OFI & INS & ? & ? \\ \hline
+  OFI & OFI & ? & ? \\ \hline
+  OFI & CG & ? & ? \\ \hline
+  OFI & SP & ? & ? \\ \hline
+  OFI & CB & ? & ? \\ \hline
+  OFI & RoW & ? & ? \\ \hline
+  \hline
+  %
+  CG & HH & ? & ? \\ \hline
+  CG & NFC & ? & ? \\ \hline
+  CG & MFI & ? & ? \\ \hline
+  CG & INS & ? & ? \\ \hline
+  CG & OFI & ? & ? \\ \hline
+  CG & CG & ? & ? \\ \hline
+  CG & SP & ? & ? \\ \hline
+  CG & CB & ? & ? \\ \hline
+  CG & RoW & ? & ? \\ \hline
+  \hline
+  %
+  SP & HH & ? & ? \\ \hline
+  SP & NFC & ? & ? \\ \hline
+  SP & MFI & ? & ? \\ \hline
+  SP & INS & ? & ? \\ \hline
+  SP & OFI & ? & ? \\ \hline
+  SP & CG & ? & ? \\ \hline
+  SP & SP & ? & ? \\ \hline
+  SP & CB & ? & ? \\ \hline
+  SP & RoW & ? & ? \\ \hline
+  \hline
+  %
+  CB & HH & ? & ? \\ \hline
+  CB & NFC & ? & ? \\ \hline
+  CB & MFI & ? & ? \\ \hline
+  CB & INS & ? & ? \\ \hline
+  CB & OFI & ? & ? \\ \hline
+  CB & CG & ? & ? \\ \hline
+  CB & SP & ? & ? \\ \hline
+  CB & CB & ? & ? \\ \hline
+  CB & RoW & ? & ? \\ \hline
+  \hline
+  %
+  RoW & HH & ? & ? \\ \hline
+  RoW & NFC & ? & ? \\ \hline
+  RoW & MFI & ? & ? \\ \hline
+  RoW & INS & ? & ? \\ \hline
+  RoW & OFI & ? & ? \\ \hline
+  RoW & CG & ? & ? \\ \hline
+  RoW & SP & ? & ? \\ \hline
+  RoW & CB & ? & ? \\ \hline
+  RoW & RoW & ? & ? \\ \hline
+  %
 \end{longtable}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix 2                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix 2}
+
 %\end{appendices}
 
 %</thesis>
+
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Glossary                                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\printglossary[type=main]
+\todo{Make glossary appear in table of contets}
+%</thesis|techdoc>
 
 %<*thesis|techdoc>
 \end{document}
 %</thesis|techdoc>
 
 %<*ref>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% References                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @article{ath01,
-	author	= {Author Authorson},
-	title	= {The Economic Article},
-	journal	= {Journal of Economic Articles},
-	date	= {2001-09},
-	year	= {2001},
-	month	= {September},
-	volume	= {3},
-	number	= {5},
-	pages	= {100--110},
-	doi		= {10.1257/jel.48.3.603},
-	url		= {http://www.aeaweb.org/articles.php?doi=10.1257/jel.48.3.603},
-	abstract	= {An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper’s purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
+  author  = {Author Authorson},
+  title  = {The Economic Article},
+  journal  = {Journal of Economic Articles},
+  date  = {2001-09},
+  year  = {2001},
+  month  = {September},
+  volume  = {3},
+  number  = {5},
+  pages  = {100--110},
+  doi    = {10.1257/jel.48.3.603},
+  url    = {http://www.aeaweb.org/articles.php?doi=10.1257/jel.48.3.603},
+  abstract  = {An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper’s purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 }
 @TechReport{imf02,
-	author	= {Brad Setser and Nouriel Roubini and Christian Keller and Mark Allen and Christoph B. Rosenberg},
-	title	= {A Balance Sheet Approach to Financial Crisis},
-	date	= {2002-12},
-	year	= {2002},
-	month	= {Dec},
-	institution	= {International Monetary Fund},
-	type	= {IMF Working Papers},
-	url		= {http://ideas.repec.org/p/imf/imfwpa/02-210.html},
-	number	= {02/210},
-	abstract	= {The paper lays out an analytical framework for understanding crises in emergin	markets based on examination of stock variables in the aggregate balance sheet of a country and the balance sheets of its main sectors (assets and liabilities). It focuses on the risks created by maturity, currency, and capital structure mismatches. This framework draws attention to the vulnerabilities created by debts among residents, particularly those denominated in foreign currency, and it helps to explain how problems in one sector can spill over into other sectors, eventually triggering an external balance of payments crisis. The paper also discusses the potential of macroeconomic policies and official intervention to mitigate the cost of such a crisis.},
-	keywords={Emerging markets}
+  author  = {Brad Setser and Nouriel Roubini and Christian Keller and Mark Allen and Christoph B. Rosenberg},
+  title  = {A Balance Sheet Approach to Financial Crisis},
+  date  = {2002-12},
+  year  = {2002},
+  month  = {Dec},
+  institution  = {International Monetary Fund},
+  type  = {IMF Working Papers},
+  url    = {http://ideas.repec.org/p/imf/imfwpa/02-210.html},
+  number  = {02/210},
+  abstract  = {The paper lays out an analytical framework for understanding crises in emergin  markets based on examination of stock variables in the aggregate balance sheet of a country and the balance sheets of its main sectors (assets and liabilities). It focuses on the risks created by maturity, currency, and capital structure mismatches. This framework draws attention to the vulnerabilities created by debts among residents, particularly those denominated in foreign currency, and it helps to explain how problems in one sector can spill over into other sectors, eventually triggering an external balance of payments crisis. The paper also discusses the potential of macroeconomic policies and official intervention to mitigate the cost of such a crisis.},
+  keywords={Emerging markets}
 }
 @TechReport{ecb09,
-  author	= {Olli Castr\'{e}n and Ilja Kristian Kavonius},
-  title		= {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
-  date		= {2009-12},
-  year		= {2009},
-  month		= {Dec},
-  institution		= {European Central Bank},
-  type		= {Working Paper Series},
-  url		= {http://ideas.repec.org/p/ecb/ecbwps/20091124.html},
-  number	= {1124},
-  abstract	= {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
-  keywords	= {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
+  author  = {Olli Castr\'{e}n and Ilja Kristian Kavonius},
+  title    = {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
+  date    = {2009-12},
+  year    = {2009},
+  month    = {Dec},
+  institution    = {European Central Bank},
+  type    = {Working Paper Series},
+  url    = {http://ideas.repec.org/p/ecb/ecbwps/20091124.html},
+  number  = {1124},
+  abstract  = {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
+  keywords  = {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
 }
 @Proceedings{ken12,
-  author	= {Jim Kennedy},
-  title		= {Overview of Flow of Funds Accounts},
-  date		= {2012-06-28},
-  year		= {2012},
-  month		= {June},
-  institution		= {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
-  organisation		= {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
-  type		= {Presentation},
-  url		= {http://www.federalreserve.gov/releases/z1/about/kennedy-fof-20120628.pdf},
-  %number	= {1124},
-  %abstract	= {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
-  %keywords	= {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
+  author  = {Jim Kennedy},
+  title    = {Overview of Flow of Funds Accounts},
+  date    = {2012-06-28},
+  year    = {2012},
+  month    = {June},
+  institution    = {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
+  organisation    = {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
+  type    = {Presentation},
+  url    = {http://www.federalreserve.gov/releases/z1/about/kennedy-fof-20120628.pdf},
+  %number  = {1124},
+  %abstract  = {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
+  %keywords  = {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
 }
 @Manual{bdfed00,
-  title		= {Guide to the Flow of Accounts},
-  year		= {2000},
-  organisation		= {Board of Governors of the Federal Reserve System},
-  url		= {http://johnfwilson.net/resources/$40Guide+to+the+FOF+Accounts+$282000$29.pdf}
+  title    = {Guide to the Flow of Accounts},
+  year    = {2000},
+  organisation    = {Board of Governors of the Federal Reserve System},
+  url    = {http://johnfwilson.net/resources/$40Guide+to+the+FOF+Accounts+$282000$29.pdf}
 }
 %</ref>
 
 %<*dump>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCSTRIP installation files                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <<Write DOCSTRIP installation files>>=
 writeLines(
-	"\\input docstrip.tex		%Loads docstrip
-	\\keepsilent
-	\\askforoverwritefalse
-	\\nopreamble
-	\\nopostamble
-	\\generate{
-		\\file{thesis.rnw}{					%Sets the output:	thesis.rnw
-	    	\\from{workdoc.rnw}{thesis}}		%Sets the input:	workdoc.rnw	& the tag:	thesis
-		\\file{techdoc.rnw}{					%Sets the output:	techdoc.rnw
-	    	\\from{workdoc.rnw}{techdoc}}	%Sets the input:	workdoc.rnw	& the tag:	techdoc
-		\\file{ref.bib}{					%Sets the output:	techdoc.rnw
-	    	\\from{workdoc.rnw}{ref}}	%Sets the input:	workdoc.rnw	& the tag:	techdoc
-	}
-	\\endbatchfile"
-	,con="workdoc.ins"
+  "\\input docstrip.tex    %Loads docstrip
+  \\keepsilent
+  \\askforoverwritefalse
+  \\nopreamble
+  \\nopostamble
+  \\generate{
+    \\file{thesis.rnw}{          %Sets the output:  thesis.rnw
+      \\from{workdoc.rnw}{thesis}}    %Sets the input:  workdoc.rnw  & the tag:  thesis
+    \\file{techdoc.rnw}{          %Sets the output:  techdoc.rnw
+        \\from{workdoc.rnw}{techdoc}}  %Sets the input:  workdoc.rnw  & the tag:  techdoc
+    \\file{ref.bib}{          %Sets the output:  techdoc.rnw
+        \\from{workdoc.rnw}{ref}}  %Sets the input:  workdoc.rnw  & the tag:  techdoc
+  }
+  \\endbatchfile"
+  ,con="workdoc.ins"
 )
 @
 %</dump>
