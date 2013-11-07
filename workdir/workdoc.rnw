@@ -845,6 +845,26 @@ RoW & RoW & ? & ? \\ \hline
   abstract	= {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
   keywords	= {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
 }
+@Proceedings{ken12,
+  author	= {Jim Kennedy},
+  title		= {Overview of Flow of Funds Accounts},
+  date		= {2012-06-28},
+  year		= {2012},
+  month		= {June},
+  institution		= {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
+  organisation		= {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
+  type		= {Presentation},
+  url		= {http://www.federalreserve.gov/releases/z1/about/kennedy-fof-20120628.pdf},
+  %number	= {1124},
+  %abstract	= {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
+  %keywords	= {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
+}
+@Manual{bdfed00,
+  title		= {Guide to the Flow of Accounts},
+  year		= {2000},
+  organisation		= {Board of Governors of the Federal Reserve System},
+  url		= {http://johnfwilson.net/resources/$40Guide+to+the+FOF+Accounts+$282000$29.pdf}
+}
 %</ref>
 
 %<*dump>
