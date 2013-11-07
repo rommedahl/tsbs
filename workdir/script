@@ -4,7 +4,8 @@
 
 #[sudo chmod a+x script]
 
-rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lod *.lof *.log *.lot *.out *.pdf *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
+# Initial remove
+rm -r -f *.pdf
 
 # Knits the workdoc to create the DOCSTRIP installation file workdoc.ins
 Rscript -e "library(knitr); knit('workdoc.rnw')"
@@ -17,6 +18,7 @@ rm -r -f *.tex
 # Process the thesis
 Rscript -e "library(knitr); knit('thesis.rnw')"		# Knits the thesis.rnw
 pdflatex -interaction=batchmode -halt-on-error thesis
+makeglossaries thesis
 bibtex thesis
 pdflatex -interaction=batchmode -halt-on-error thesis
 pdflatex -interaction=batchmode -halt-on-error thesis
@@ -36,4 +38,4 @@ pdflatex -interaction=batchmode -halt-on-error thesis
 #pdflatex -interaction=batchmode -halt-on-error techdoc
 #pdflatex -interaction=batchmode -halt-on-error techdoc
 
-rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lod *.lof *.log *.lot *.out *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
+rm -r -f figure thesis.rnw *.acn *.acr *.alg *.aux *.bbl *.bib *.blg *.glg *.glo *.gls *.ins *.ist *.lod *.lof *.log *.lot *.out *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
