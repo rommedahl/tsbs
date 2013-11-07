@@ -30,10 +30,10 @@ pdflatex -interaction=batchmode -halt-on-error thesis
 # pdflatex RJwrapper
 
 # Process the techdoc
-Rscript -e "library(knitr); knit('techdoc.rnw')"	# Knits the techdoc.rnw
-pdflatex -interaction=batchmode -halt-on-error techdoc
-bibtex techdoc
-pdflatex -interaction=batchmode -halt-on-error techdoc
-pdflatex -interaction=batchmode -halt-on-error techdoc
+#Rscript -e "library(knitr); knit('techdoc.rnw')"	# Knits the techdoc.rnw
+#pdflatex -interaction=batchmode -halt-on-error techdoc
+#bibtex techdoc
+#pdflatex -interaction=batchmode -halt-on-error techdoc
+#pdflatex -interaction=batchmode -halt-on-error techdoc
 
 rm -r -f figure thesis.rnw techdoc.rnw *.aux *.bbl *.bib *.blg *.ins *.lod *.lof *.log *.lot *.out *.run.xml *.spl *.sty *.tex *.toc	#*tikzDictionary
