@@ -105,9 +105,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+
 %%
 %% Document settings
 %%
+
 \title{Cointegrating Relationships\\in a Balance Sheet Approach}
 %\subtitle{The subtitle}  %Not in standard class.
 \author{
@@ -179,7 +181,7 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 %%
 
 \clearpage
-\printglossary[type=\acronymtype]
+\printglossary[type=acronymtype,style=long]
 \listoffigures
 \listoftables
 %</thesis|techdoc>
@@ -424,7 +426,7 @@ Therefore we do also have two fallback options presented in table~\ref{tab:secto
 \marginpar{This definition of the sectors is preliminary.
 The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}
 %
-\begin{table}
+\begin{table}  % Different levels of sector division
   \centering
   \begin{threeparttable}
     \caption{Different levels of sector division}
@@ -451,7 +453,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
   \end{threeparttable}
 \end{table}
 
-\begin{table}
+\begin{table}  % Trade-off: Sectors and Lags vs. Restricions on degrees of freedom
   \centering
   \begin{threeparttable}
     \caption{Trade-off: Sectors and Lags vs. Restricions on degrees of freedom}
@@ -481,7 +483,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
   \end{threeparttable}
 \end{table}
 
-\begin{table}
+\begin{table}  % Options for the set of Sectors
   \centering
   \begin{threeparttable}
     \caption{Options for the set of Sectors}
@@ -518,7 +520,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
   \end{threeparttable}
 \end{table}
 
-\begin{table}\footnotesize
+\begin{table}\footnotesize  % Examination of Financial Interlinkages
   \centering
   \begin{threeparttable}
     \caption{Examination of Financial Interlinkages}
@@ -545,7 +547,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
   \end{threeparttable}
 \end{table}
 
-\begin{table}\footnotesize
+\begin{table}\footnotesize  % Examination of Financial Flows
   \centering
   \begin{threeparttable}
     \caption{Examination of Financial Flows}
@@ -572,7 +574,7 @@ The papers I have looked at have different set of sectors and also a Rest of the
   \end{threeparttable}
 \end{table}
 
-\begin{table}\footnotesize
+\begin{table}\footnotesize  % Examination of Tangible Assets
   \centering
   \begin{threeparttable}
     \caption{Examination of Tangible Assets}
@@ -686,6 +688,8 @@ plot(rnorm(100))
 \label{fig:sb_figure}
 \end{figure}
 
+\cite{bgfed13a}
+
 \gls{linux} \linebreak % Första användningen.
 \gls{linux} \linebreak% Andra användningen.
 \glspl{linux} \linebreak% Plural?
@@ -697,6 +701,7 @@ Lite text emellan.
 \acrshort{fpsLabel} \linebreak
 
 %\acr{fpsLabel} % Borde finnas som kommando?
+
 
 \gls{fpsLabel}
 % Första användningen.
@@ -907,64 +912,76 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 %% References                                                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @article{ath01,
-  author  = {Author Authorson},
-  title  = {The Economic Article},
-  journal  = {Journal of Economic Articles},
-  date  = {2001-09},
-  year  = {2001},
-  month  = {September},
-  volume  = {3},
-  number  = {5},
-  pages  = {100--110},
-  doi    = {10.1257/jel.48.3.603},
-  url    = {http://www.aeaweb.org/articles.php?doi=10.1257/jel.48.3.603},
-  abstract  = {An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper’s purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
+  author       = {Author Authorson},
+  title        = {The Economic Article},
+  journaltitle = {Journal of Economic Articles},
+  date         = {2001-09},
+  month        = {September},
+  volume   = {3},
+  number   = {5},
+  pages    = {100--110},
+  doi      = {10.1257/jel.48.3.603},
+  url      = {http://www.aeaweb.org/articles.php?doi=10.1257/jel.48.3.603},
+  abstract = {An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper’s purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 }
-@TechReport{imf02,
-  author  = {Brad Setser and Nouriel Roubini and Christian Keller and Mark Allen and Christoph B. Rosenberg},
-  title  = {A Balance Sheet Approach to Financial Crisis},
-  date  = {2002-12},
-  year  = {2002},
-  month  = {Dec},
-  institution  = {International Monetary Fund},
-  type  = {IMF Working Papers},
-  url    = {http://ideas.repec.org/p/imf/imfwpa/02-210.html},
-  number  = {02/210},
-  abstract  = {The paper lays out an analytical framework for understanding crises in emergin  markets based on examination of stock variables in the aggregate balance sheet of a country and the balance sheets of its main sectors (assets and liabilities). It focuses on the risks created by maturity, currency, and capital structure mismatches. This framework draws attention to the vulnerabilities created by debts among residents, particularly those denominated in foreign currency, and it helps to explain how problems in one sector can spill over into other sectors, eventually triggering an external balance of payments crisis. The paper also discusses the potential of macroeconomic policies and official intervention to mitigate the cost of such a crisis.},
+
+@report{bgfed13a,
+  author      = {Board of Governors of the Federal Reserve System},
+  title       = {Financial Accounts of the United States},
+  type        = {Datareport},
+  institution = {Board of Governors of the Federal Reserve System},
+  date        = {2013-09-25},
+
+  subtitle    = {Flow of Funds, Balance Sheets, and Integrated Macroeconomic Accounts: Second Quarter 2013},
+  titleaddon  = {Title addon},
+  url         = {http://www.federalreserve.gov/releases/z1/Current/}
+}
+
+@techreport{imf02,
+  author      = {Brad Setser and Nouriel Roubini and Christian Keller and Mark Allen and Christoph B. Rosenberg},
+  title       = {A Balance Sheet Approach to Financial Crisis},
+  date        = {2002-12},
+  year        = {2002},
+  month       = {Dec},
+  institution = {International Monetary Fund},
+  type        = {IMF Working Papers},
+  url         = {http://ideas.repec.org/p/imf/imfwpa/02-210.html},
+  number      = {02/210},
+  abstract    = {The paper lays out an analytical framework for understanding crises in emergin  markets based on examination of stock variables in the aggregate balance sheet of a country and the balance sheets of its main sectors (assets and liabilities). It focuses on the risks created by maturity, currency, and capital structure mismatches. This framework draws attention to the vulnerabilities created by debts among residents, particularly those denominated in foreign currency, and it helps to explain how problems in one sector can spill over into other sectors, eventually triggering an external balance of payments crisis. The paper also discusses the potential of macroeconomic policies and official intervention to mitigate the cost of such a crisis.},
   keywords={Emerging markets}
 }
-@TechReport{ecb09,
-  author  = {Olli Castr\'{e}n and Ilja Kristian Kavonius},
-  title    = {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
-  date    = {2009-12},
-  year    = {2009},
-  month    = {Dec},
-  institution    = {European Central Bank},
-  type    = {Working Paper Series},
-  url    = {http://ideas.repec.org/p/ecb/ecbwps/20091124.html},
-  number  = {1124},
-  abstract  = {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
-  keywords  = {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
+
+@techreport{ecb09,
+  author      = {Olli Castr\'{e}n and Ilja Kristian Kavonius},
+  title       = {Balance Sheet Interlinkages and Macro-Financial Risk Analysis in the Euro Area},
+  date        = {2009-12},
+  year        = {2009},
+  month       = {Dec},
+  institution = {European Central Bank},
+  type        = {Working Paper Series},
+  url         = {http://ideas.repec.org/p/ecb/ecbwps/20091124.html},
+  number      = {1124},
+  abstract    = {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
+  keywords    = {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
 }
-@Proceedings{ken12,
-  author  = {Jim Kennedy},
-  title    = {Overview of Flow of Funds Accounts},
-  date    = {2012-06-28},
-  year    = {2012},
-  month    = {June},
-  institution    = {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
-  organisation    = {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
-  type    = {Presentation},
-  url    = {http://www.federalreserve.gov/releases/z1/about/kennedy-fof-20120628.pdf},
-  %number  = {1124},
-  %abstract  = {The financial crisis has highlighted the need for models that can identify counterparty risk exposures and shock transmission processes at the systemic level. We use the euro area financial accounts (flow of funds) data to construct a sector-level network of bilateral balance sheet exposures and show how local shocks can propagate throughout the network and affect the balance sheets in other, even seemingly remote, parts of the financial system. We then use the contingent claims approach to extend this accounting-based network of interlinked exposures to risk-based balance sheets which are sensitive to changes in leverage and asset volatility. We conclude that the bilateral cross-sector exposures in the euro area financial system constitute important channels through which local risk exposures and balance sheet dislocations can be transmitted, with the financial intermediaries playing a key role in the processes. High financial leverage and high asset volatility are found to increase a sector’s vulnerability to shocks and contagion. JEL Classification: C22, E01, E21, E44, F36, G01, G12, G14.},
-  %keywords  = {Balance sheet contagion; financial accounts; network models; contingent claims analysis; systemic ri}
+
+@proceedings{ken12,
+  author       = {Jim Kennedy},
+  title        = {Overview of Flow of Funds Accounts},
+  date         = {2012-06-28},
+  year         = {2012},
+  month        = {June},
+  institution  = {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
+  organisation = {Flow of Funds Section of the Federal Reserve Board's Division of Research and Statistics},
+  type         = {Presentation},
+  url          = {http://www.federalreserve.gov/releases/z1/about/kennedy-fof-20120628.pdf}
 }
-@Manual{bdfed00,
-  title    = {Guide to the Flow of Accounts},
-  year    = {2000},
-  organisation    = {Board of Governors of the Federal Reserve System},
-  url    = {http://johnfwilson.net/resources/$40Guide+to+the+FOF+Accounts+$282000$29.pdf}
+
+@Manual{bgfed00,
+  title        = {Guide to the Flow of Accounts},
+  year         = {2000},
+  organisation = {Board of Governors of the Federal Reserve System},
+  url          = {http://johnfwilson.net/resources/$40Guide+to+the+FOF+Accounts+$282000$29.pdf}
 }
 %</ref>
 
