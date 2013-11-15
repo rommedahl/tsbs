@@ -220,7 +220,7 @@ VarNamesZ1 <- function(searchvector, data, value = TRUE) {
   #
   # Returns:
   #   A vector with matching indices or elements.
-    return(grep(SearchVectorZ1(searchvector), colnames(data), value = value))
+  return(grep(SearchVectorZ1(searchvector), colnames(data), value = value))
 }
 
 VarNameListZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
@@ -233,7 +233,7 @@ VarNameListZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
   #
   # Returns:
   #   A list containing vector with matching indices or elements.
-    return(lapply(tslist, function(i) VarNamesZ1(searchvector,i, value)))
+  return(lapply(tslist, function(i) VarNamesZ1(searchvector,i, value)))
 }
 
 VarZ1 <- function(searchvector, data, value = TRUE) {
@@ -246,12 +246,15 @@ VarZ1 <- function(searchvector, data, value = TRUE) {
   #
   # Returns:
   #   The columns that matched the search pattern.
-    data <- data[, VarNamesZ1(searchvector, data, value)]
-    if (length(data) > 0){
-      return (data)
-    } else {
-    return(NULL)
-    }
+  data <- data[, VarNamesZ1(searchvector, data, value)]
+  if (length(data) > 0){
+    return (data)
+  #}
+  #if (length(data) == 1){
+  #  return (paste(VarNamesZ1(searchvector, data, TRUE)) <- data)
+  } else {
+  return(NULL)
+  }
 }
 
 VarListZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
@@ -264,7 +267,7 @@ VarListZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
   #
   # Returns:
   #   A list containing columns that matched the search pattern.
-    return(lapply(tslist, function(i) VarZ1(searchvector,i, value)))
+  return(lapply(tslist, function(i) VarZ1(searchvector,i, value)))
 }
 
 VarSelectionZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
@@ -276,6 +279,30 @@ VarSelectionZ1 <- function(searchvector, tslist=Z1(), value = TRUE) {
   #   value: Should grep return value (default) or indices. For other functions.
   #
   # Returns:
-  #   A list containing columns that matched the search pattern.
-    return(CbindZ1Cat(VarListZ1(searchvector, tslist, value)))
+  #   A MTS object with variables that matched the search pattern.
+  selection <- CbindZ1Cat(VarListZ1(searchvector, tslist, value))
+  colnames(selection) <- unlist(VarNameListZ1(searchvector))
+  return(selection)
+}
+
+DuplicatedColsZ1 <- function(data) {
+  # Finds duplicated columns.
+  #
+  # Args:
+  #   data: a data object as a dataframe or mts.
+  #
+  # Returns:
+  #   A vector where duplicated columns are marked TRUE.
+  return(duplicated(data, MARGIN = 2))
+}
+
+RemoveDuplicatedColsZ1 <- function(data) {
+  # Removes duplicated columns.
+  #
+  # Args:
+  #   data: a data object as a dataframe or mts.
+  #
+  # Returns:
+  #   A data object as a dataframe or mts.
+  data[, !DuplicatedColsZ1(data)]
 }
