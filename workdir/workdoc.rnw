@@ -1,24 +1,24 @@
 %<*dump>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                                            %%
-%% Author: Marcus Rommedahl                                                   %%
-%% Email:  40310@student.hhs.se                                               %%
-%% Date:   2013-02-01                                                         %%
-%%                                                                            %%
+%%
+%% Author: Marcus Rommedahl
+%% Email:  40310@student.hhs.se
+%% Date:   2013-02-01
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                                            %%
-%% This project consists of the following files:                              %%
-%%                                                                            %%
-%% * workdoc.rnw (THIS FILE)                                                  %%
-%% *                                                                          %%
-%% * script (A BASH script file)                                              %%
-%%                                                                            %%
+%%
+%% This project consists of the following files:
+%%
+%% * workdoc.rnw (THIS FILE)
+%% *
+%% * script (A BASH script file)
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %</dump>
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Preamble                                                                   %%
+%% Preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%
@@ -40,6 +40,8 @@
 \usepackage{multirow}  % Make multiple rows in tables.
 \usepackage[flushleft]{threeparttable}
 \usepackage{longtable}
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
 %\usepackage{booktabs}
 
 %% Math
@@ -56,8 +58,19 @@
 \addbibresource{ref.bib}  % Use instead of natbib
 %\usepackage{natbib}    % Adds additional styles to bibtex.
 
+
 %% Hyperreflinks
 \usepackage[breaklinks, colorlinks=false, linkbordercolor={0 0 1}]{hyperref}  %Ex­ten­sive sup­port for hy­per­text. Makes it possible to click internal links. Load after biblatex. It should be loaded at the end of the preamble.
+
+% Smart references
+\usepackage{cleveref}
+
+% Bara inlagt för att få ADF-table att fungera.
+\usepackage{rotating}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+
 
 %%
 %% Commands and definitions
@@ -101,7 +114,7 @@
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Dokument                                                                   %%
+%% Dokument
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -118,20 +131,31 @@
   \texttt{\small 40310@student.hhs.se}
   \and
   \emph{Supervisor}\\
-  Richard Sandberg\\
+  Rickard Sandberg\\
   \texttt{\small rickard.sandberg@hhs.se}
 }
 
 \setcounter{page}{1}
 \pagenumbering{roman}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Front matter                                                               %%
+%% Front matter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%
 %% Title page
 %%
+
+<<set, echo=FALSE, >>=
+opts_chunk$set(echo = FALSE)
+@
+
+<<source, include = FALSE>>=
+setwd("~/Documents/Studier & Förkovran/Högskolestudier/Stockholm School of Economics/MSc in Economics/Kurser/5350 Thesis in Economics/workdir/")
+source("urca.R")
+source("code.R")
+@
 
 \begin{titlepage}
 \begin{center}
@@ -145,7 +169,7 @@
 \thispagestyle{empty}
 
 \abstract{
-\hspace{0pt}\marginpar{The abstract is to be written when the thesis is about to be finished.}%
+\hspace{0pt}\marginpar{Max 200 words. The abstract is to be written when the thesis is about to be finished.}%
 An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose.
 When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application.
 Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
@@ -182,13 +206,14 @@ Abstracting and indexing services for various academic disciplines are aimed at 
 
 \clearpage
 \printglossary[type=acronymtype,style=long]
+\printglossaries
 \listoffigures
 \listoftables
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Introduction                                                               %%
+%% Introduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \setcounter{page}{1}
@@ -221,7 +246,7 @@ In the \hyperref[sec:model_specification]{sixth section} we will formalize our m
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Theory and previous research                                               %%
+%% Theory and previous research
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory \& Previous Research}\label{sec:theory_previous_research}%%%%%%%
 \hspace{0pt}\marginpar{Theory and previous research. Really not that much theory for this topic.}%
@@ -244,7 +269,7 @@ ECB \cite{ecb09}
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% The Balance Sheet Approach                                                 %%
+%% The Balance Sheet Approach
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Balance Sheet Approach}\label{sec:balance_sheet_approach}%%%%%%%%%%
 
@@ -393,65 +418,318 @@ that we can represent as the vector
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Emperical strategy                                                         %%
+%% Emperical strategy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Empirical strategy}\label{sec:empirical_strategy}%%%%%%%%%%%%%%%%%%%%%%
 
 The aim of this section is to evaluation the options we have when defining or model, so that we later will get get a good and accurate estimation.
-This will be conducted in [X] steps.
-We will first decide what sectors to include into the model, which has to be traded for power in the estimation process.
-Then we will evaluate the financial interlinkages, flows and real/tangible property/assets of the sectors to decide what entries we will keep in the model.
-Nonexistent and insignificant entries will be dropped out of the model.
-Next step is to find a subject economy on which there are sufficent time series data, so we can turn our entries into time series variables.
+We will first present the data, what considerations we has to it, and summary statistics.
 After this, we can continue to the next section and data evaluation.
 %</thesis|techdoc>
 
 %<*thesis|techdoc>
+\subsection{Data}\label{sec:data}
+
+In this thesis we will use data from the statistical publication \citetitle{bgfed13z1} (also known as the Z.1 report), that is released by the \textcite{bgfed13z1}.
+It contains flow of funds data along with other data series on the economy of the United States.
+Historical quarterly data from the first quarter of 1952 is provided \parencite*{bgfed13fz1hist}.
+Unfortunately this data publication doesn't have data on the financial interlinkages between sectors (also known as \emph{who-to-whom} accounts), only on the gross financial assets and liabilites for the sectors is presented.
+One country that does have \emph{who-to-whom} accounts is Australia by the \textcite{abs13}.
+As the use of \emph{who-to-whom} data requires models with many more parameters, the short range of Australian data doesn't make it feasible to estimate the desired models.
+Therefore we will instead use the US data to gain from the long range of it's time series.
+
 \subsection{Defining [the] sectors}\label{sec:defining_sectors}
 
-To have a interesting model, we want do define valid sectors with as heterogeneous agents as possible.
-In table~\ref{tab:sector_division} is a illustration of how the economy can be divided into sectors, in the range from a one global economy sector, to a very fine-grained division of sectors.
-But as the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a trade-off between how many sectors to define, and not to loose power in the estimation process.
-As an illustration we can assume a simple simple time series model with $s$ sectors and $n$ lags.
-If we would keep all entries in the $[X]$ and $[F]$ matrices and the vector $p_{t}$, we would end up with $(2s^2+s)n$ estimators.
-Table~\ref{tab:tradeoff_table} shows how fast the number of estimators increases with the numbers of sectors and lags.
-Anoter aspect to consider is data availability, that we can find data for the sectors to use with our model.
+The Financial Accounts data contains over 4000 time series, which are classified according to a vast selection of sectors and other properties, such if the data is a flow or a level, seasonally adjusted or not, etc.
+To find the ones that are useful for this application, we council the Coded Tables of the Financial Accounts \parencite*{bgfed13z1coded}, and the online resource \citetitle{bgfed13fag} \parencite*{bgfed13fag}.
 
-\cite{ecb09} defines seven sectors: households, non-financial corporations, banks, insurance and pension fund companies, other financial intermediaries, general government, and the rest of the world.
-But we are also interested in how the central bank and the social security and pension funds, all sub-sectors to the general government sector in \cite{ecb09}.
-Thus we have nine sectors of interest, which are our preferred choice of sectors.
-But to have that many sectors is dependent on that we can reduce many combinations to have a good estimate.
-Therefore we do also have two fallback options presented in table~\ref{tab:sector_options}.
+In the Coded Tables we can find three series that are useful to us \parencite*[see row 1-3, column 15-16 in][2]{bgfed13z1coded}.
+The first serie is the total financial assets for all sectors \parencite*[\emph{FL894090005.Q}][]{bgfed13fagass}.
+The other two series are the total financial liabilities for all sectors, the first one which doesn't include equity \parencite*[\emph{FL894190005.Q}][]{bgfed13fagliab}, and the other one that does include equity \parencite*[\emph{FL894194005.Q}][]{bgfed13fagliabeq}.
+Those/These three series include all sectors, and are in them self not interesting for our analysis.
+But if we use the \emph{Series analyzer} in the \citetitle{bgfed13fag}, we can find out from what series they are derived.
+This is presented in \cref{tab:allassets,tab:allliab,tab:allliabeq}.
+
+<<allassetstable, results="asis">>=
+print.xtable(
+  x = allassetstable,
+  include.rownames = FALSE,
+  caption.placement = "top"
+)
+@
+
+<<allliabtable, results="asis">>=
+print.xtable(
+  x = allliabtable,
+  include.rownames = FALSE,
+  caption.placement = "top"
+)
+@
+
+
+<<allliabeqtable, results="asis">>=
+print.xtable(
+  x = allliabeqtable,
+  include.rownames = FALSE,
+  caption.placement = "top"
+)
+@
+
+<<allnonfinassetstable, results="asis">>=
+print.xtable(
+  x = nonfinassetsxtable,
+  include.rownames = FALSE,
+  caption.placement = "top"
+)
+@
+
+<<incomextable, results="asis">>=
+print.xtable(
+  x = incomextable,
+  include.rownames = FALSE,
+  caption.placement = "top"
+)
+@
+
+
+<<summaryassetsxtable, results="asis">>=
+print.xtable(
+  x = xtabledirtyassets,
+  include.rownames = FALSE,
+  caption.placement = "top"
+)
+@
+
+
+
+%To have a interesting model, we want do define valid sectors with as heterogeneous agents as possible.
+%In table~\ref{tab:sector_division} is a illustration of how the economy can be divided into sectors, in the range from a one global economy sector, to a very fine-grained division of sectors.
+%But as the number of sectors is increased, the entries in the matrix grows with the square, and therefore we face a trade-off between how many sectors to define, and not to loose power in the estimation process.
+%As an illustration we can assume a simple simple time series model with $s$ sectors and $n$ lags.
+%If we would keep all entries in the $[X]$ and $[F]$ matrices and the vector $p_{t}$, we would end up with $(2s^2+s)n$ estimators.
+%Table~\ref{tab:tradeoff_table} shows how fast the number of estimators increases with the numbers of sectors and lags.
+%Anoter aspect to consider is data availability, that we can find data for the sectors to use with our model.
+
+%\cite{ecb09} defines seven sectors: households, non-financial corporations, banks, insurance and pension fund companies, other financial intermediaries, general government, and the rest of the world.
+%But we are also interested in how the central bank and the social security and pension funds, all sub-sectors to the general government sector in \cite{ecb09}.
+%Thus we have nine sectors of interest, which are our preferred choice of sectors.
+%But to have that many sectors is dependent on that we can reduce many combinations to have a good estimate.
+%Therefore we do also have two fallback options presented in table~\ref{tab:sector_options}.
 %
-\marginpar{This definition of the sectors is preliminary.
-The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}
+%\marginpar{This definition of the sectors is preliminary.
+%The papers I have looked at have different set of sectors and also a Rest of the World sector that I might have to add.}
 %
-\begin{table}  % Different levels of sector division
-  \centering
-  \begin{threeparttable}
-    \caption{Different levels of sector division}
-    \label{tab:sector_division}
-    \centering
-    \begin{tabular}{| c || c | c | c | c | c | c |}
-      \cline{2-7}
-      \multicolumn{1}{r||}{} & \multicolumn{6}{|c|}{Level} \\ \cline{2-7}
-      \multicolumn{1}{r||}{} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
-      \multirow{6}{*}{Sector} & \multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Global\\ \footnotesize Economy\end{tabular}} &
-      \begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}
-      &  21  &  36  &  55  &  78  \\  \cline{3-7}
-      &  &
-      \multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Subject\\ \footnotesize Economy\end{tabular}}  &  42  &  72  &  110  &  156  \\  \cline{4-7}
-      &  &  &  63  &  108  &  165  &  234  \\  \cline{4-7}
-      &  &  &  84  &  144  &  220  &  312  \\  \cline{4-7}
-      &  &  &  105  &  180  &  275  &  390  \\  \cline{4-7}
-      &  &  &  126  &  216  &  330  &  468  \\  \hline
-    \end{tabular}
-    \begin{tablenotes}
-      \scriptsize
-      \item Different levels of sector division.
-    \end{tablenotes}
-  \end{threeparttable}
+
+%Dynamics. The effect of prices. Flows. Assumptions.
+
+%The first thing we will do in the empirical strategy is to define a proto-model such that we can chose what variables to evaluate.
+%From the variables in the proto-model we will also choose or subject of analysis, as availability of data is a crucial aspect.
+%First, all the variables need to have a sample rate that meets a minimal requirement, as the data has to be downsampled to the sample rate of the variable with the lowest sample rate.
+%Also, the data series needs to bee long enough to later get a good model estimation.
+%
+%
+%As the choice of time series model is very dependent on the properties of the variables the evaluation process is very crucial.
+
+%In short.
+%Test variables for integrated/stationarity for decision on what model to use.
+
+%Dependent on data avaliability.
+%US/EU/OECD-country?
+
+%The assessment dependent och the behaviour/properties of the variables. Stationary. Integrated.
+
+%Variable examination.
+
+\subsection{Sector Descriptions}\label{sec:sector_descriptions}%%%%%%%%%%%%%%%%%
+
+Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+
+\begin{description}
+  \item[First] The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.
+  \item[Second] The second item The second item The second item The second item The second item The second item The second item The second item The second item
+  \item[Third] The third etc. The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.
+\end{description}
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Data evaluation and Model specification
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Data evaluation \& Model specification}\label{sec:model_specification}%
+
+Why a VAR/VECM-type of model.
+
+What kind of VAR/VECM-type of model. Assumptions.
+
+Why different alternations/specifications of the model.
+
+\subsection{Univariate evaluation}\label{sec:univariate_evaluation}%%%%%%%%%%%%%
+
+
+\subsubsection{Financial assets}
+
+\begin{figure}
+<<assetplot, results="asis">>=
+par(mar=c(5,3,2,2)+0.1)
+plot(dirtysectorassets, lty = 1:6, lwd=2, plot.type = "single")
+legend("topleft", colnames(dirtysectorassets), cex=1.0, lty=1:6, lwd=2, bty="n")
+@
+\caption{Asset series}
+\label{fig:assetsplot}
+\end{figure}
+
+<<assetadftables, results="asis", echo=FALSE>>=
+ADFTable(assetadft)
+@
+
+\subsubsection{Financial liabilities}
+
+\begin{figure}
+<<liabplot, results="asis">>=
+plot(dirtysectorliab, lty = 1:6, lwd=2, plot.type = "single")
+legend("topleft", colnames(dirtysectorliab), cex=1.0, lty=1:6, lwd=2, bty="n")
+@
+\caption{Liability series}
+\label{fig:liabsplot}
+\end{figure}
+
+<<liabadftables, results="asis", echo=FALSE>>=
+ADFTable(liabadft)
+@
+
+\subsubsection{Non-Financial assets}
+
+\begin{figure}
+<<nonfinplot, results="asis">>=
+par(mar=c(5,3,2,2)+0.1)
+plot(dirtysectornonfin, lty = 1:2, lwd=2, plot.type = "single")
+legend("topleft", colnames(dirtysectornonfin), cex=1.0, lty=1:2, lwd=2, bty="n")
+@
+\caption{Non-financial assets series}
+\label{fig:nonfinsplot}
+\end{figure}
+<<nofinasspadftables, results="asis", echo=FALSE>>=
+ADFTable(nofinassadft)
+@
+
+\subsubsection{Income \& Production}
+
+\begin{figure}
+<<incomeplot, results="asis">>=
+par(mar=c(5,3,2,2)+0.1)
+plot(income, lty = 1:3, lwd=2, plot.type = "single")
+legend("topleft", colnames(income), cex=1.0, lty=1:3, lwd=2, bty="n")
+@
+\caption{Income \& Production series}
+\label{fig:incomeplot}
+\end{figure}
+
+<<incadftables, results="asis", echo=FALSE>>=
+ADFTable(incadft)
+@
+
+\subsection{Multivariate evaluation}\label{sec:multivariate_evaluation}%%%%%%%%%%%%%
+
+<<ranktable, results="asis", echo=FALSE>>=
+RankTable(vecm1e)
+@
+
+
+
+
+<<vecm, echo=TRUE>>=
+print(summary(vecm1))
+print(summary(vecm2))
+@
+
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Estimation results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estimation results}\label{sec:estimation_results}%%%%%%%%%%%%%%%%%%%%%%
+
+We will love some estimationresults.
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis}\label{sec:analysis}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+And we sure will like the analysis.
+%</thesis|techdoc>
+
+%<*thesis|techdoc>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Conclusions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}\label{sec:conclusions}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+But it is in the conclusions the magic happends.
+%</thesis|techdoc>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sandbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%<*thesis|techdoc>
+%\clearpage
+\section{Sandbox}\label{sec:sandbox}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}%
+
+Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
+
+\begin{figure}[h]
+<<foo, eval=TRUE, echo=FALSE, results='asis', fig.height=4>>=
+plot(rnorm(100))
+@
+\caption[Text that shows up in the figure listing.]{Text describing this figure under the figure.}
+\label{fig:sb_figure}
+\end{figure}
+
+\cite{bgfed13z1}
+
+\gls{linux} \linebreak % Första användningen.
+\gls{linux} \linebreak% Andra användningen.
+\glspl{linux} \linebreak% Plural?
+\Gls{linux} \linebreak% Andra användningen.
+\Glspl{linux} \linebreak% Plural?
+%
+Lite text emellan.
+%
+\acrshort{fpsLabel} \linebreak
+
+%\acr{fpsLabel} % Borde finnas som kommando?
+
+
+\gls{fpsLabel}
+% Första användningen.
+\gls{fpsLabel} \linebreak% Andra användningen.
+\glspl{fpsLabel} \linebreak% Plural?
+\Gls{fpsLabel} \linebreak% Andra användningen.
+\Glspl{fpsLabel} \linebreak% Plural?
+\acrlong{fpsLabel} \linebreak
+\acrlongpl{fpsLabel} \linebreak
+\acrshort{fpsLabel} \linebreak
+
+Lite text emellan.
+
+\begin{table}[height]
+\caption[Text that shows up in the table listing.]{Text describing this figure over the table.}
+\label{tab:sb_table}
+\centering
+\begin{tabular}{ l | c || r }
+  1 & 2 & 3 \\
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+\end{tabular}
 \end{table}
+
 
 \begin{table}  % Trade-off: Sectors and Lags vs. Restricions on degrees of freedom
   \centering
@@ -479,6 +757,35 @@ The papers I have looked at have different set of sectors and also a Rest of the
     \begin{tablenotes}
       \scriptsize
       \item The numbers show how many estimations to be made if we allow for all possible financial claims and flows in between the sectors. As we can see, this numbers grows fast as we add sectors and lags.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+
+
+\begin{table}  % Different levels of sector division
+  \centering
+  \begin{threeparttable}
+    \caption{Different levels of sector division}
+    \label{tab:sector_division}
+    \centering
+    \begin{tabular}{| c || c | c | c | c | c | c |}
+      \cline{2-7}
+      \multicolumn{1}{r||}{} & \multicolumn{6}{|c|}{Level} \\ \cline{2-7}
+      \multicolumn{1}{r||}{} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+      \multirow{6}{*}{Sector} & \multirow{6}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Global\\ \footnotesize Economy\end{tabular}} &
+      \begin{tabular}[x]{@{}c@{}} \footnotesize Rest of\\ \footnotesize the World\end{tabular}
+      &  21  &  36  &  55  &  78  \\  \cline{3-7}
+      &  &
+      \multirow{5}{*}{\begin{tabular}[x]{@{}c@{}} \footnotesize Subject\\ \footnotesize Economy\end{tabular}}  &  42  &  72  &  110  &  156  \\  \cline{4-7}
+      &  &  &  63  &  108  &  165  &  234  \\  \cline{4-7}
+      &  &  &  84  &  144  &  220  &  312  \\  \cline{4-7}
+      &  &  &  105  &  180  &  275  &  390  \\  \cline{4-7}
+      &  &  &  126  &  216  &  330  &  468  \\  \hline
+    \end{tabular}
+    \begin{tablenotes}
+      \scriptsize
+      \item Different levels of sector division.
     \end{tablenotes}
   \end{threeparttable}
 \end{table}
@@ -593,145 +900,12 @@ The papers I have looked at have different set of sectors and also a Rest of the
   \end{threeparttable}
 \end{table}
 
-%Dynamics. The effect of prices. Flows. Assumptions.
-
-%The first thing we will do in the empirical strategy is to define a proto-model such that we can chose what variables to evaluate.
-%From the variables in the proto-model we will also choose or subject of analysis, as availability of data is a crucial aspect.
-%First, all the variables need to have a sample rate that meets a minimal requirement, as the data has to be downsampled to the sample rate of the variable with the lowest sample rate.
-%Also, the data series needs to bee long enough to later get a good model estimation.
-%
-%
-%As the choice of time series model is very dependent on the properties of the variables the evaluation process is very crucial.
-
-%In short.
-%Test variables for integrated/stationarity for decision on what model to use.
-
-%Dependent on data avaliability.
-%US/EU/OECD-country?
-
-%The assessment dependent och the behaviour/properties of the variables. Stationary. Integrated.
-
-%Variable examination.
-
-\subsection{Sector Descriptions}\label{sec:sector_descriptions}%%%%%%%%%%%%%%%%%
-
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-
-\begin{description}
-  \item[First] The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.  The first item.
-  \item[Second] The second item The second item The second item The second item The second item The second item The second item The second item The second item
-  \item[Third] The third etc. The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.The third etc.
-\end{description}
-
-\subsection{Evaluating [the] entries}\label{sec:evaluating_entries}%%%%%%%%%%%%%
-
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Data evaluation and Model specification                                    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data evaluation \& Model specification}\label{sec:model_specification}%
-
-Why a VAR/VECM-type of model.
-
-What kind of VAR/VECM-type of model. Assumptions.
-
-Why different alternations/specifications of the model.
-
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Estimation results                                                         %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Estimation results}\label{sec:estimation_results}%%%%%%%%%%%%%%%%%%%%%%
-
-We will love some estimationresults.
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Analysis                                                                   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Analysis}\label{sec:analysis}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-And we sure will like the analysis.
-%</thesis|techdoc>
-
-%<*thesis|techdoc>
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Conclusions                                                                %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}\label{sec:conclusions}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-But it is in the conclusions the magic happends.
-%</thesis|techdoc>
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Sandbox                                                                    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%<*thesis|techdoc>
-%\clearpage
-\section{Sandbox}\label{sec:sandbox}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hspace{0pt}\marginpar{Sandbox for Latex, knitr and R during the composition of the thesis.}%
-
-Here is a code chunk. And some text: Sandbox for Latex, knitr and R during the composition of the thesis. Sandbox for Latex, knitr and R during the composition of the thesis.
-
-\begin{figure}[h]
-<<foo, eval=TRUE, echo=FALSE, results='asis', fig.height=4>>=
-plot(rnorm(100))
-@
-\caption[Text that shows up in the figure listing.]{Text describing this figure under the figure.}
-\label{fig:sb_figure}
-\end{figure}
-
-\cite{bgfed13a}
-
-\gls{linux} \linebreak % Första användningen.
-\gls{linux} \linebreak% Andra användningen.
-\glspl{linux} \linebreak% Plural?
-\Gls{linux} \linebreak% Andra användningen.
-\Glspl{linux} \linebreak% Plural?
-%
-Lite text emellan.
-%
-\acrshort{fpsLabel} \linebreak
-
-%\acr{fpsLabel} % Borde finnas som kommando?
-
-
-\gls{fpsLabel}
-% Första användningen.
-\gls{fpsLabel} \linebreak% Andra användningen.
-\glspl{fpsLabel} \linebreak% Plural?
-\Gls{fpsLabel} \linebreak% Andra användningen.
-\Glspl{fpsLabel} \linebreak% Plural?
-\acrlong{fpsLabel} \linebreak
-\acrlongpl{fpsLabel} \linebreak
-\acrshort{fpsLabel} \linebreak
-
-Lite text emellan.
-
-\begin{table}[height]
-\caption[Text that shows up in the table listing.]{Text describing this figure over the table.}
-\label{tab:sb_table}
-\centering
-\begin{tabular}{ l | c || r }
-  1 & 2 & 3 \\
-  4 & 5 & 6 \\
-  7 & 8 & 9 \\
-\end{tabular}
-\end{table}
-
 You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number. Example of a reference. \cite{ath01}.
 %</thesis|techdoc>
 
 %<*thesis>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bibliography                                                               %%
+%% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \printbibliography  % Using biblatex
@@ -741,7 +915,7 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 
 %<*thesis>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Appendices                                                                 %%
+%% Appendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \setcounter{page}{1}
@@ -752,7 +926,7 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 \addappheadtotoc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Appendix 1                                                                 %%
+%% Appendix 1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\begin{appendices}
@@ -885,7 +1059,7 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Appendix 2                                                                 %%
+%% Appendix 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix 2}
 
@@ -896,7 +1070,7 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 
 %<*thesis|techdoc>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Glossary                                                                   %%
+%% Glossary
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \printglossary[type=main]
@@ -909,7 +1083,7 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 
 %<*ref>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% References                                                                 %%
+%% References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @article{ath01,
   author       = {Author Authorson},
@@ -925,16 +1099,77 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
   abstract = {An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper’s purpose. When used, an abstract always appears at the beginning of a manuscript or typescript, acting as the point-of-entry for any given academic paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.}
 }
 
-@report{bgfed13a,
-  author      = {Board of Governors of the Federal Reserve System},
+@report{bgfed13z1,
+  author      = {{Board of Governors of the Federal Reserve System}},
   title       = {Financial Accounts of the United States},
   type        = {Datareport},
-  institution = {Board of Governors of the Federal Reserve System},
-  date        = {2013-09-25},
+  date        = {2013-12-09},
 
-  subtitle    = {Flow of Funds, Balance Sheets, and Integrated Macroeconomic Accounts: Second Quarter 2013},
-  titleaddon  = {Title addon},
+  subtitle    = {Flow of Funds, Balance Sheets, and Integrated Macroeconomic Accounts: Third Quarter 2013},
   url         = {http://www.federalreserve.gov/releases/z1/Current/}
+}
+
+@report{bgfed13z1coded,
+  author      = {{Board of Governors of the Federal Reserve System}},
+  title       = {Financial Accounts of the United States},
+  type        = {Datareport},
+  date        = {2013-12-09},
+
+  subtitle    = {Flow of Funds, Balance Sheets, and Integrated Macroeconomic Accounts: Coded Tables},
+  url         = {http://www.federalreserve.gov/releases/z1/Current/Coded/}
+}
+
+@online{bgfed13fag,
+  author      = {{Board of Governors of the Federal Reserve System}},
+  title       = {Financial Accounts Guide},
+  date        = {2013-03-07},
+  url         = {http://www.federalreserve.gov/apps/fof/},
+  urldate     = {2014-01-06}
+}
+
+@online{bgfed13fagass,
+  author      = {{Board of Governors of the Federal Reserve System}},
+  title       = {Financial Accounts Guide},
+  date        = {2013-03-07},
+  subtitle    = {Series analyzer for FL894090005.Q},
+  url         = {http://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FL894090005&t=L.5&suf=Q},
+  urldate     = {2014-01-06}
+}
+
+@online{bgfed13fagliab,
+  author      = {{Board of Governors of the Federal Reserve System}},
+  title       = {Financial Accounts Guide},
+  date        = {2013-03-07},
+  subtitle    = {Series analyzer for FL894190005.Q},
+  url         = {http://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FL894190005&t=L.5&suf=Q},
+  urldate     = {2014-01-06}
+}
+
+@online{bgfed13fagliabeq,
+  author      = {{Board of Governors of the Federal Reserve System}},
+  title       = {Financial Accounts Guide},
+  date        = {2013-03-07},
+  subtitle    = {Series analyzer for FL894194005.Q},
+  url         = {http://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FL894194005&t=L.5&suf=Q},
+  urldate     = {2014-01-06}
+}
+
+@online{bgfed13fz1hist,
+  author      = {{Board of Governors of the Federal Reserve System}},
+  title       = {Financial Accounts of the United States},
+  date        = {2013-12-09},
+  subtitle    = {Flow of Funds, Balance Sheets, and Integrated Macroeconomic Accounts: Third Quarter 2013},
+  url         = {http://www.federalreserve.gov/releases/z1/Current/data.htm},
+  urldate     = {2014-01-06}
+}
+
+@online{abs13,
+  author      = {{Australian Bureau of Statistics}},
+  title       = {Australian National Accounts},
+  subtitle    = {Financial Accounts},
+  date        = {2013-09-26},
+  url         = {http://www.abs.gov.au/AUSSTATS/abs@.nsf/productsbytitle/F667A926CE831C21CA257695001CB7E3?OpenDocument},
+  urldate     = {2014-01-06}
 }
 
 @techreport{imf02,
@@ -987,7 +1222,7 @@ You can also write inline expressions, e.g.\ $\pi=\Sexpr{pi}$, and \Sexpr{1.5986
 
 %<*dump>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% DOCSTRIP installation files                                                %%
+%% DOCSTRIP installation files
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <<Write DOCSTRIP installation files>>=
 writeLines(
